@@ -49,9 +49,14 @@ Authentication: - verify current user and private routes
 
 ### Endpoints
 
-| Method | Path         | description     | Body |
-| :----: | ------------ | --------------- | ---- |
-|  GET   | `/protected` | protected route |      |
+| Method  | Path         | description     | Body |
+| :----:  | ------------ | --------------- | ---- |
+|  GET    | `/protected` | protected route |      |
+|  GET    | `/ads     `  | list all ads    |      |
+|  POST   | `/ads`       | create an ad    |      |
+|  GET    | `/ads/:id`   | get an ad       |      |
+|  PUT    | `/ads/:id`   | update an ad    |      |
+|  DELETE | `/ads/:id`   | delete an ad    |      |
 
 ### Auth
 
@@ -64,17 +69,18 @@ Authentication: - verify current user and private routes
 
 ## Views
 
-| View (Component) | Path         | description    |
-| :--------------- | ------------ | -------------- |
-| Home             | `/`          | home           |
-| Login            | `/login`     | login page     |
-| Signup           | `/signup`    | signup page    |
-| Advertisements   | `/ads`       | ads list       |
-| Ad Detail        | `/ads/:id`   | ads details    |
-| Ad Create        | `/ads/add`   | create form    |
-| Profile          | `/user/:id`  | profile's page |
-| Error            | `/error`     | error page    |
-| Protected        | `/protected` | protected view |
+| View (Component) | Path               | description    |
+| :--------------- | ------------       | -------------- |
+| Home             | `/`                | home           |
+| Login            | `/login`           | login page     |
+| Signup           | `/signup`          | signup page    |
+| Advertisements   | `/ads`             | ads list       |
+| Ad Detail        | `/ads/:id`         | ads details    |
+| Ad Update        | `/ads/:id/update`  | ads details    |
+| Ad Create        | `/ads/add`         | create form    |
+| Profile          | `/user/:id`        | profile's page |
+| Error            | `/error`           | error page     |
+| Protected        | `/protected`       | protected view |
 
 
 ## Links
