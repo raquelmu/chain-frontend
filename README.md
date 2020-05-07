@@ -14,7 +14,7 @@ It is a collaborative website where you can announce the exchange of objects or 
 
 ## Motivation
 
-Consolidate React with your own project where you can put its functionality into practice (components and Backend-Frontend connection)
+Being able to facilitate the exchange of favors or services in a time of economic crisis and also encourage solidarity.
 
 ## User Stories
 
@@ -47,18 +47,22 @@ Authentication: - verify current user and private routes
 
 ## ROUTES Backend:
 
-### Endpoints
+### Backend Endpoints
 
-| Method  | Path         | description     | Body |
-| :----:  | ------------ | --------------- | ---- |
-|  GET    | `/protected` | protected route |      |
-|  GET    | `/ads     `  | list all ads    |      |
-|  POST   | `/ads`       | create an ad    |      |
-|  GET    | `/ads/:id`   | get an ad       |      |
-|  PUT    | `/ads/:id`   | update an ad    |      |
-|  DELETE | `/ads/:id`   | delete an ad    |      |
+| Method  | Path          | description     | Body |
+| :----:  | ------------  | --------------- | ---- |
+|  GET    | `/ads     `   | list all ads    |      |
+|  POST   | `/ads/new`    | create an ad    |      |
+|  GET    | `/ads/:id`    | get an ad       |      |
+|  PUT    | `/ads/:id`    | update an ad    |      |
+|  DELETE | `/ads/:id`    | delete an ad    |      |
+|  GET    | `/profile `   | my profile      |      |
+|  PUT    | `/profile `   | update profile  |      |
+|  DELETE | `/profile `   | delete profile  |      |
+|  GET    | `/profile/:id`| other profile   |      |
+|  GET    | `/favs     `  | list all favs   |      |
 
-### Auth
+### Backend Auth
 
 | Method | Path      | description    | Body                     |
 | :----: | --------- | -------------- | ------------------------ |
@@ -76,11 +80,14 @@ Authentication: - verify current user and private routes
 | Signup           | `/signup`          | signup page    |
 | Advertisements   | `/ads`             | ads list       |
 | Ad Detail        | `/ads/:id`         | ads details    |
-| Ad Update        | `/ads/:id/update`  | ads details    |
-| Ad Create        | `/ads/add`         | create form    |
-| Profile          | `/user/:id`        | profile's page |
-| Error            | `/error`           | error page     |
-| Protected        | `/protected`       | protected view |
+| Ad Update        | `/ads/:id`         | ads update     |
+| Ad delete        | `/ads/:id`         | ads delete     |
+| Ad Create        | `/ads/new`         | create ads     |
+| Profile          | `/profile`         | profile's page |
+| Update profile   | `/profile`         | profile update |
+| Profile          | `/profile`         | profile delete |
+| Other profile    | `/profile/:id`     | other profile  |
+| Favorites        | `/favs`            | favs page      |
 
 
 ## Links
