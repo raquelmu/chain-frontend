@@ -8,14 +8,33 @@ class ApiClient {
     });
   }
 
-  whoami() {
-    return this.apiClient.get("/whoami");
+  getAllAds() {
+    return this.apiClient.get("/ads");
   }
 
-  login(body) {
-    return this.apiClient.post("/login", body);
+  createAd(body) {
+    return this.apiClient.post("/ads", body);
   }
+
+  deleteAd(id) {
+    return this.apiClient.delete(`/ads/${id}`);
+  }
+
+  updateAd(id) {
+    return this.apiClient.put(`/ads/${id}`);
+  }
+
+
+  
 }
+//   whoami() {
+//     return this.apiClient.get("/whoami");
+//   }
+
+//   login(body) {
+//     return this.apiClient.post("/login", body);
+//   }
+// }
 
 const apiClient = new ApiClient();
 export default apiClient;
