@@ -4,8 +4,8 @@ import { Switch, Route } from "react-router-dom";
 // import Login from "./views/Login";
 // import Home from "./views/Home";
 
-import Ads from "./views/Ads";
-import AddAd from "./views/AddAd";
+import Ads from "./views/Ads/Ads";
+//import AddAd from "./views/AddAd";
 import Home from "./views/Home";
 
 
@@ -85,9 +85,9 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path={"/"} component={Home} />
-        <Route exact path={"/ads"} component={Ads} />
-        <Route exact path={"/ads/add"} component={AddAd} />
-        {/* <Route exact path={"/ads/:id"} component={SingleAd} />
+        <Route exact path={"/ads/all"} component={Ads} />
+       {/* <Route exact path={"/ads/add"} component={AddAd} />
+         <Route exact path={"/ads/:id"} component={SingleAd} />
         <Route exact path={"/ads/:id/update"} component={SingleAd} />
         <Route exact path={"/profile"} component={Profile} />
         <Route exact path={"/profile/:id"} component={Profile} />

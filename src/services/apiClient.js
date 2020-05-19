@@ -9,20 +9,20 @@ class ApiClient {
   }
 
   getAllAds() {
-    return this.apiClient.get("/ads");
+    return this.apiClient.get("/ads/all");
   }
 
-  createAd(body) {
-    return this.apiClient.post("/ads", body);
-  }
+  // createAd(body) {
+  //   return this.apiClient.post("/new", body);
+  // }
 
   deleteAd(id) {
     return this.apiClient.delete(`/ads/${id}`);
   }
 
-  updateAd(id) {
-    return this.apiClient.put(`/ads/${id}`);
-  }
+  // updateAd(id) {
+  //   return this.apiClient.put(`/ads/${id}`);
+  // }
 
 
   

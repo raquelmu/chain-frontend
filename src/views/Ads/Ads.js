@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import apiClient from "../services/apiClient";
+import apiClient from "../../services/apiClient";
 
 export default class Ads extends Component {
   state = {
@@ -9,9 +9,10 @@ export default class Ads extends Component {
   loadAds = () => {
     apiClient
       .getAllAds()
-      .then(({ data }) => {
+      .then((response) => {
+        console.log(response)
         this.setState({
-          ads: data,
+          ads: response.data,
         });
       })
       .catch((error) => {
@@ -35,17 +36,17 @@ export default class Ads extends Component {
       });
   };
 
-   handleUpdate = (id) => {
-    apiClient
-      .updateAd(id)
-      .then(() => {
-        console.log("update");
-        this.loadAds();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  //  handleUpdate = (id) => {
+  //   apiClient
+  //     .updateAd(id)
+  //     .then(() => {
+  //       console.log("update");
+  //       this.loadAds();
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   renderAds = () => {
     const { ads } = this.state;
