@@ -39,6 +39,19 @@ class App extends Component {
         });
       });
   }
+  handleSignup = ({ username, password }) => {
+    apiClient
+    .signup({ username, password })
+    .then(({ data: user }) => {
+      this.setState({
+        isLoggedIn: true,
+        user,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   handleLogin = ({ username, password }) => {
     apiClient
@@ -67,7 +80,7 @@ class App extends Component {
             <Switch>              
               <Route exact path={"/"} component={Home} />
             <AnonRoute exact path={"/signup"} isLoggedIn={isLoggedIn}>
-                <Signup />
+                <Signup onSignup={this.handleSignup} />
               </AnonRoute>
               <PrivateRoute exact path={"/profile"} isLoggedIn={isLoggedIn}>
                 <SingleProfile />
@@ -98,7 +111,7 @@ class App extends Component {
               <AnonRoute exact path={"/login"} isLoggedIn={isLoggedIn}>
                 <Login onLogin={this.handleLogin} />
               </AnonRoute>
-              <PrivateRoute exact path={"/allads"} isLoggedIn={isLoggedIn}>
+              <PrivateRoute exact path={"/ads/all"} isLoggedIn={isLoggedIn}>
                 <Ads />
               </PrivateRoute>
             </Switch>
