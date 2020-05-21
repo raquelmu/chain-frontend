@@ -67,13 +67,12 @@ class App extends Component {
           <div className="App">
             <Switch>
               <Route exact path={"/"} component={Home} />
-              <Route exact path={"/ads/all"} component={Ads} />
               <Route exact path={"/signup"} component={Signup} />
               {/* <Route exact path={"/logout"} component={Signup} /> */}
-              <Route exact path={"/:id"} component={SingleProfile} />
+              <Route exact path={"/profile"} component={SingleProfile} />
               {/* <Route exact path={"/user/:id/rating"} component={SingleProfile} /> */}
               <Route exact path={"/ads/new"} component={SingleAd} />
-              <Route exact path={"/ads/:id"} component={SingleAd} />
+              <Route exact path={"/ads/id"} component={SingleAd} />
               {/* <Route exact path={"/ads/join/add"} component={SingleAd} />
               <Route exact path={"/ads/join/remove"} component={SingleAd} /> */}
               {/* <Route exact path={"/ads/select"} component={AddAd} />
@@ -82,11 +81,11 @@ class App extends Component {
               <Route exact path={"/user/favorites/all"} component={Favorites} />
               {/* <Route exact path={"user/favorites/add"} component={Favs} />
               <Route exact path={"user/favorites/remove"} component={Favs} /> */}
-              <Route exact path={"/login"} isLoggedIn={isLoggedIn}>
+              <AnonRoute exact path={"/login"} isLoggedIn={isLoggedIn}>
                 <Login onLogin={this.handleLogin} />
-              </Route>
-              <PrivateRoute exact path={"/protected"} isLoggedIn={isLoggedIn}>
-                <Protected />
+              </AnonRoute>
+              <PrivateRoute exact path={"/ads/all"} isLoggedIn={isLoggedIn}>
+                <Ads />
               </PrivateRoute>
             </Switch>
           </div>
