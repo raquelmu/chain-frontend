@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
-export default class Protected extends Component {
+export default class Favorites extends Component {
+
   render() {
     return (
       <div>
-        <h1>Protected</h1>
+        <h1>Favorites</h1>
       </div>
     );
   }

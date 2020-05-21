@@ -26,15 +26,15 @@ class ApiClient {
 
 
   
-}
-//   whoami() {
-//     return this.apiClient.get("/whoami");
-//   }
-
-//   login(body) {
-//     return this.apiClient.post("/login", body);
-//   }
 // }
+  whoami() {
+    return this.apiClient.get("/whoami");
+  }
+
+  login(body) {
+    return this.apiClient.post("/login", body);
+  }
+}
 
 const apiClient = new ApiClient();
 export default apiClient;

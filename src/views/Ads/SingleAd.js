@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
-export default class Protected extends Component {
+export default class SingleAd extends Component {
+
   render() {
     return (
       <div>
-        <h1>Protected</h1>
+        <h1>SingleAd</h1>
       </div>
     );
   }
