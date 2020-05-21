@@ -8,7 +8,6 @@ import Home from "./views/Home";
 import SingleAd from "./views/Ads/SingleAd";
 import SingleProfile from "./views/Profile/SingleProfile";
 import Favorites from "./views/Favorites";
-import Protected from "./views/Protected";
 
 
 import { AnonRoute, PrivateRoute } from "./components";
@@ -65,26 +64,41 @@ class App extends Component {
         {isLoading && <div> Loading.......</div>}
         {!isLoading && (
           <div className="App">
-            <Switch>
+            <Switch>              
               <Route exact path={"/"} component={Home} />
-              <Route exact path={"/signup"} component={Signup} />
+            <AnonRoute exact path={"/signup"} isLoggedIn={isLoggedIn}>
+                <Signup />
+              </AnonRoute>
+              <PrivateRoute exact path={"/profile"} isLoggedIn={isLoggedIn}>
+                <SingleProfile />
+              </PrivateRoute>
+              <PrivateRoute exact path={"/newadd"} isLoggedIn={isLoggedIn}>
+                <SingleAd />
+              </PrivateRoute>
+              <PrivateRoute exact path={"/oneadd"} isLoggedIn={isLoggedIn}>
+                <SingleAd />
+              </PrivateRoute>
+              <PrivateRoute exact path={"/editadd"} isLoggedIn={isLoggedIn}>
+                <SingleAd />
+              </PrivateRoute>
+              <PrivateRoute exact path={"/favs"} isLoggedIn={isLoggedIn}>
+                <Favorites />
+              </PrivateRoute>
+            
+
               {/* <Route exact path={"/logout"} component={Signup} /> */}
-              <Route exact path={"/profile"} component={SingleProfile} />
               {/* <Route exact path={"/user/:id/rating"} component={SingleProfile} /> */}
-              <Route exact path={"/ads/new"} component={SingleAd} />
-              <Route exact path={"/ads/id"} component={SingleAd} />
               {/* <Route exact path={"/ads/join/add"} component={SingleAd} />
               <Route exact path={"/ads/join/remove"} component={SingleAd} /> */}
               {/* <Route exact path={"/ads/select"} component={AddAd} />
               <Route exact path={"/ads/completed"} component={AddAd} /> */}
-              <Route exact path={"/ads/:id/update"} component={SingleAd} />
-              <Route exact path={"/user/favorites/all"} component={Favorites} />
               {/* <Route exact path={"user/favorites/add"} component={Favs} />
               <Route exact path={"user/favorites/remove"} component={Favs} /> */}
+
               <AnonRoute exact path={"/login"} isLoggedIn={isLoggedIn}>
                 <Login onLogin={this.handleLogin} />
               </AnonRoute>
-              <PrivateRoute exact path={"/ads/all"} isLoggedIn={isLoggedIn}>
+              <PrivateRoute exact path={"/allads"} isLoggedIn={isLoggedIn}>
                 <Ads />
               </PrivateRoute>
             </Switch>
