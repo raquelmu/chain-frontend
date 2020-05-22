@@ -11,7 +11,7 @@ function AnonRoute({ children, isLoggedIn, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/ads/all",
+              pathname: "/ads/",
               state: { from: location },
             }}
           />

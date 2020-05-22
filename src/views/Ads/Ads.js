@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
+import { Link } from "react-router-dom";
 
 export default class Ads extends Component {
   state = {
@@ -21,6 +22,7 @@ export default class Ads extends Component {
   };
 
   componentDidMount() {
+    console.log("COMPONENT DID MOUNT")
     this.loadAds();
   }
 
@@ -53,7 +55,7 @@ export default class Ads extends Component {
     return ads.map((ad, index) => {
       return (
         <li key={index}>
-          {ad.name}
+          <Link to={"/ads/" + ad._id}>{ad.name}</Link>
           <button
             onClick={(e) => {
               this.handleDelete(ad._id);

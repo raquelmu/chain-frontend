@@ -66,26 +66,27 @@ class App extends Component {
           <div className="App">
             <Switch>              
               <Route exact path={"/"} component={Home} />
-            <AnonRoute exact path={"/signup"} isLoggedIn={isLoggedIn}>
+              <AnonRoute exact path={"/signup"} isLoggedIn={isLoggedIn}>
                 <Signup />
               </AnonRoute>
               <PrivateRoute exact path={"/profile"} isLoggedIn={isLoggedIn}>
                 <SingleProfile />
               </PrivateRoute>
-              <PrivateRoute exact path={"/newadd"} isLoggedIn={isLoggedIn}>
+              {/*<PrivateRoute exact path={"/newad"} isLoggedIn={isLoggedIn}>
                 <SingleAd />
               </PrivateRoute>
-              <PrivateRoute exact path={"/oneadd"} isLoggedIn={isLoggedIn}>
-                <SingleAd />
-              </PrivateRoute>
-              <PrivateRoute exact path={"/editadd"} isLoggedIn={isLoggedIn}>
+              <PrivateRoute exact path={"/editad"} isLoggedIn={isLoggedIn}>
                 <SingleAd />
               </PrivateRoute>
               <PrivateRoute exact path={"/favs"} isLoggedIn={isLoggedIn}>
                 <Favorites />
-              </PrivateRoute>
-            
-
+              </PrivateRoute>*/}
+              <PrivateRoute
+                exact
+                path={"/ads/:id"}
+                isLoggedIn={isLoggedIn}
+                component={SingleAd}
+              />
               {/* <Route exact path={"/logout"} component={Signup} /> */}
               {/* <Route exact path={"/user/:id/rating"} component={SingleProfile} /> */}
               {/* <Route exact path={"/ads/join/add"} component={SingleAd} />
@@ -98,9 +99,12 @@ class App extends Component {
               <AnonRoute exact path={"/login"} isLoggedIn={isLoggedIn}>
                 <Login onLogin={this.handleLogin} />
               </AnonRoute>
-              <PrivateRoute exact path={"/allads"} isLoggedIn={isLoggedIn}>
-                <Ads />
-              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path={"/ads"}
+                isLoggedIn={isLoggedIn}
+                component={Ads}
+              />
             </Switch>
           </div>
         )}

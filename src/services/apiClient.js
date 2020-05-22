@@ -12,6 +12,10 @@ class ApiClient {
     return this.apiClient.get("/ads/all");
   }
 
+  getAdById(adId) {
+    return this.apiClient.get(`/ads/${adId}`);
+  }
+
   // createAd(body) {
   //   return this.apiClient.post("/new", body);
   // }
