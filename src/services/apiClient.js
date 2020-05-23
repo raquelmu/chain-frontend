@@ -28,6 +28,12 @@ class ApiClient {
   //   return this.apiClient.put(`/ads/${id}`);
   // }
 
+  //PROFILE
+
+  getProfileById(userId) {
+    return this.apiClient.get(`/${userId}`);
+    
+  }
 
   
 // }

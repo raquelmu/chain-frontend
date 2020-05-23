@@ -8,6 +8,7 @@ export default class SingleAd extends Component {
   }
 
   componentDidMount(){
+    console.log(this.props)
     apiClient.getAdById(this.props.match.params.id)
     .then(response => {
       this.setState({
