@@ -39,6 +39,19 @@ class App extends Component {
         });
       });
   }
+  handleSignup = ({ username, password }) => {
+    apiClient
+    .signup({ username, password })
+    .then(({ data: user }) => {
+      this.setState({
+        isLoggedIn: true,
+        user,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   handleLogin = ({ username, password }) => {
     apiClient
@@ -65,15 +78,9 @@ class App extends Component {
         {!isLoading && (
           <div className="App">
             <Switch>              
-              <Route 
-                exact 
-                path={"/"} 
-                component={Home} />
-              <AnonRoute 
-                exact 
-                path={"/signup"} 
-                isLoggedIn={isLoggedIn}>
-                <Signup />
+              <Route exact path={"/"} component={Home} />
+            <AnonRoute exact path={"/signup"} isLoggedIn={isLoggedIn}>
+                <Signup onSignup={this.handleSignup} />
               </AnonRoute>
               <PrivateRoute 
                 exact 
@@ -118,7 +125,16 @@ class App extends Component {
               {/* <Route exact path={"user/favorites/add"} component={Favs} />
               <Route exact path={"user/favorites/remove"} component={Favs} /> */}
 
+<<<<<<< HEAD
               
+=======
+              <AnonRoute exact path={"/login"} isLoggedIn={isLoggedIn}>
+                <Login onLogin={this.handleLogin} />
+              </AnonRoute>
+              <PrivateRoute exact path={"/ads/all"} isLoggedIn={isLoggedIn}>
+                <Ads />
+              </PrivateRoute>
+>>>>>>> c5ba4aff3e269d7c1ccb2d90fa7500412175af87
             </Switch>
           </div>
         )}
