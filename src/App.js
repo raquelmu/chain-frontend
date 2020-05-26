@@ -71,7 +71,7 @@ class App extends Component {
   };
 
   render() {
-    const { isLoggedIn, isLoading } = this.state;
+    const { isLoggedIn, isLoading, user } = this.state;
     return (
       <div>
         {isLoading && <div> Loading.......</div>}
@@ -91,9 +91,9 @@ class App extends Component {
               <PrivateRoute 
                 exact 
                 path={"/profile/:id"} 
-                isLoggedIn={isLoggedIn}
-                component={SingleProfile}
-              />
+                isLoggedIn={isLoggedIn}>
+                <SingleProfile user={user} />
+              </PrivateRoute>
               <PrivateRoute
                 exact
                 path={"/ads/:id"}
@@ -112,25 +112,12 @@ class App extends Component {
                 isLoggedIn={isLoggedIn}
                 component={Ads}
               />
-              {/*<PrivateRoute exact path={"/newad"} isLoggedIn={isLoggedIn}>
-                <SingleAd />
+              <PrivateRoute 
+                exact 
+                path={"/favorites"} 
+                isLoggedIn={isLoggedIn}>
+                <Favorites user={user} />
               </PrivateRoute>
-              <PrivateRoute exact path={"/editad"} isLoggedIn={isLoggedIn}>
-                <SingleAd />
-              </PrivateRoute>
-              <PrivateRoute exact path={"/favs"} isLoggedIn={isLoggedIn}>
-                <Favorites />
-              </PrivateRoute>*/}
-              
-              {/* <Route exact path={"/logout"} component={Signup} /> */}
-              {/* <Route exact path={"/user/:id/rating"} component={SingleProfile} /> */}
-              {/* <Route exact path={"/ads/join/add"} component={SingleAd} />
-              <Route exact path={"/ads/join/remove"} component={SingleAd} /> */}
-              {/* <Route exact path={"/ads/select"} component={AddAd} />
-              <Route exact path={"/ads/completed"} component={AddAd} /> */}
-              {/* <Route exact path={"user/favorites/add"} component={Favs} />
-              <Route exact path={"user/favorites/remove"} component={Favs} /> */}
-
               <AnonRoute
                 exact
                 path={"/login"}

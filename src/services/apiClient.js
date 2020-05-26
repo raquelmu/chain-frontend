@@ -8,6 +8,7 @@ class ApiClient {
     });
   }
 
+  //ADS
   getAllAds() {
     return this.apiClient.get("/ads/all");
   }
@@ -32,11 +33,8 @@ class ApiClient {
 
   getProfileById(userId) {
     return this.apiClient.get(`/${userId}`);
-    
   }
 
-  
-// }
   whoami() {
     return this.apiClient.get("/whoami");
   }
@@ -48,6 +46,14 @@ class ApiClient {
   signup(body) {
     return this.apiClient.post("/signup", body);
   }
+
+  //FAVORITES
+  getFavoritesUser() {
+    return this.apiClient.get('/user/favorites/all');
+  }
+
+
+
 }
 
 const apiClient = new ApiClient();
