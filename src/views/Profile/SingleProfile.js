@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import apiClient from "../../services/apiClient";
 
 export default class SingleProfile extends Component {
-
   // state = {
   //   user: {}
 
@@ -21,10 +20,11 @@ export default class SingleProfile extends Component {
   // }
 
   render() {
-
+    const  {user} =this.props
     return (
       <div>
-        <h1>{this.props.user.username}</h1>
+        <h1>{user.data.username
+}</h1>
       </div>
     );
   }
