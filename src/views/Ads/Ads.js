@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import { Link } from "react-router-dom";
+import SearchBar from "../../components/Search/SearchBar";
 
 export default class Ads extends Component {
   state = {
@@ -78,6 +79,7 @@ export default class Ads extends Component {
   render() {
     return (
       <div>
+        <SearchBar></SearchBar>
         <h1>Discover</h1>
         <ul>{this.renderAds()}</ul>
       </div>

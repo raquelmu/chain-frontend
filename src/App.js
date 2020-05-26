@@ -9,12 +9,11 @@ import SingleAd from "./views/Ads/SingleAd";
 import SingleProfile from "./views/Profile/SingleProfile";
 import Favorites from "./views/Favorites";
 
-
 import { AnonRoute, PrivateRoute } from "./components";
 
 import apiClient from "./services/apiClient";
 
-class App extends Component {
+export default class App extends Component {
   state = {
     isLoggedIn: false,
     user: null,
@@ -118,12 +117,6 @@ class App extends Component {
                 isLoggedIn={isLoggedIn}>
                 <Favorites user={user} />
               </PrivateRoute>
-              <AnonRoute
-                exact
-                path={"/login"}
-                isLoggedIn={isLoggedIn}>
-                <Login onLogin={this.handleLogin} />
-              </AnonRoute>
               <PrivateRoute
                 exact
                 path={"/ads/all"}
@@ -138,4 +131,3 @@ class App extends Component {
   }
 }
 
-export default App;
