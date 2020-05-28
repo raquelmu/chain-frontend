@@ -6,6 +6,7 @@ import SearchBar from "../../components/Search/SearchBar";
 export default class Ads extends Component {
   state = {
     ads: [],
+    filter: ""
   };
 
   loadAds = () => {
@@ -27,13 +28,28 @@ export default class Ads extends Component {
     this.loadAds();
   }
 
+  handleSearch = (text) => {
+    this.setState({
+      filter: text
+    })
+  }
+
 
   renderAds = () => {
     const { ads } = this.state;
-    return ads.map((ad, index) => {
+    console.log(this.state.filter)
+    const filteredArray = ads.filter(ad => {
+      if(this.state.filter.length > 0) {
+        return ad.title.toLowerCase().includes(this.state.filter.toLowerCase())
+      } else {
+        return true
+      }
+    })
+
+    return filteredArray.map((ad, index) => {
       return (
         <li key={index}>
-          <Link to={"/ads/" + ad._id}>{ad.name}</Link>
+          <Link to={"/ads/" + ad._id}>{ad.title}</Link>
         </li>
       );
     });
@@ -42,7 +58,7 @@ export default class Ads extends Component {
   render() {
     return (
       <div>
-        <SearchBar></SearchBar>
+        <SearchBar tellme={ this.handleSearch }/>
         <h1>Discover</h1>
         <ul>{this.renderAds()}</ul>
       </div>

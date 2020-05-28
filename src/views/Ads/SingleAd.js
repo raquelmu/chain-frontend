@@ -34,7 +34,8 @@ export default class SingleAd extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.ad.name}</h1>
+        <h1>{this.state.ad.title}</h1>
+        {/* { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null } */}
         <button
             onClick={(e) => {
               this.handleDelete(this.state.ad._id);
@@ -42,8 +43,9 @@ export default class SingleAd extends Component {
           >
             delete
           </button>
-          
-           {/* <button
+          {/* {user !== pepe ? button : anothebutton}
+
+           <button
             onClick={(e) => {
               this.handleUpdate(this.state.ad._id);
             }}

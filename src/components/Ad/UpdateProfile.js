@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
-// import apiClient from "../../services/apiClient";
 
 
-export default class CreateAd extends Component {
+export default class UpdateProfile extends Component {
     state = {
-        newAd : {
-            // image: "", 
-            title: "",
-            description: "",
+        updateProfile : {
+            // profile_image: "", 
+            name: "",
             location: "",
-            // date: "",
-            email: "",
-            phone: 0,
+            about: "",
+          
 
         },
     }
@@ -20,52 +17,39 @@ export default class CreateAd extends Component {
         console.log("event", e.target.value)
         console.log("name", e.target.name)
         this.setState( {
-            newAd: {
-                ...this.state.newAd, 
+            updateAd: {
+                ...this.state.updateProfile, 
                 [e.target.name] : e.target.value
             }
         })
     }
- //FALTA AÑADIR IMAGEN Y FECHA A "functionToCreateAd"
+ //FALTA AÑADIR IMAGEN Y FECHA A 
 
-    functionToCreateAd = () => {
-        apiClient.createAd(this.state.newAd)
-        .then(response => {
-            this.setState({
-                newAd: response
-            })
+ handleUpdate = () => {
+    const id = this.props.match.params.id 
+
+      apiClient
+        .updateAd(id, this.state.updateProfile)
+        .then(() => {
+          console.log("update");
         })
         .catch((error) => {
-            console.log(error);
+          console.log(error);
         });
-    }
+    };
 
-    handleClickCreateAd = (e) => {
-
-        this.functionToCreateAd();
-
-        this.setState({
-            newAd : {
-                // image: "", 
-                title: "",
-                description: "",
-                location: "",
-                // date: "",
-                email: "",
-                phone: 0,
-            }
-        });
-    }
+  
 
     //VALUE POR DEFECTO 5
     //STATUS POR DEFECTO AVAILABLE
 
     render(){
-        const { image, title, description, location, date, email, phone } = this.state.newAd;
+
+        const { image, title, description, location, date, email, phone, author, price, status } = this.state.updateAd;
 
         return(
             <div>
-                <h1>New Ad</h1>
+                <h1>Update Ad</h1>
                     {/* <label>Image</label>
                     <input type="text" name="image" value={image} onChange={this.handleInput}/> */}
                     <label>Title</label>
@@ -80,9 +64,14 @@ export default class CreateAd extends Component {
                     <input type="text" name="email" value={email} onChange={this.handleInput}/>
                     <label>Phone</label>
                     <input type="number" name="phone" value={phone} onChange={this.handleInput}/> 
-                    
+                    <label>Author</label>
+                    <input type="text" name="author" value={author} onChange={this.handleInput}/>
+                    <label>Price</label>
+                    <input type="number" name="price" value={price} onChange={this.handleInput}/>
+                    <label>Status</label>
+                    <input type="text" name="status" value={status}  onChange={this.handleInput}/>
 
-                    <button type="sumbit" value="Create" onClick={this.handleClickCreateAd}>Create</button>
+                    <button type="sumbit" value="Update" onClick={this.handleUpdate}>Update</button>
 
             </div>
         )

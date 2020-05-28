@@ -5,20 +5,11 @@ export default class SearchBar extends Component {
     results:""
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();    
-  };
-
-  cleanForm = () => {
-    this.setState({
-      results:""
-    });
-  };
-
   handleChange = (e) => {
+    const { tellme } = this.props
     this.setState({
       [e.target.name]: e.target.value,
-    });
+    }, () => tellme(this.state.results));
   };
 
   render() {
@@ -27,7 +18,6 @@ export default class SearchBar extends Component {
     return (
       <div>
         <h1>Search</h1>
-        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="results"
@@ -36,8 +26,6 @@ export default class SearchBar extends Component {
             value={results}
             onChange={this.handleChange}
           />
-          <input type="submit" value="submit" />
-        </form>
       </div>
     );
   }

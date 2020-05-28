@@ -29,10 +29,15 @@ class ApiClient {
     return this.apiClient.put(`/ads/${id}/update`, data);
   }
 
+  
   //PROFILE
 
   getProfileById(userId) {
     return this.apiClient.get(`/${userId}`);
+  }
+
+  updateProfile(id, data) {
+    return this.apiClient.put(`/${id}/update`, data);
   }
 
   whoami() {
@@ -46,6 +51,7 @@ class ApiClient {
   signup(body) {
     return this.apiClient.post("/signup", body);
   }
+
 
   //FAVORITES
   getFavoritesUser() {
