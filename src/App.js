@@ -8,6 +8,7 @@ import Home from "./views/Home";
 import SingleAd from "./views/Ads/SingleAd";
 import SingleProfile from "./views/Profile/SingleProfile";
 import Favorites from "./views/Favorites";
+import CreateAd from "./components/Ad/CreateAd";
 
 
 import { AnonRoute, PrivateRoute } from "./components";
@@ -94,6 +95,12 @@ class App extends Component {
                 isLoggedIn={isLoggedIn}>
                 <SingleProfile user={user} />
               </PrivateRoute>
+              <PrivateRoute 
+                exact
+                path={"/ads/new"} 
+                isLoggedIn={isLoggedIn}>
+                <CreateAd />
+              </PrivateRoute>
               <PrivateRoute
                 exact
                 path={"/ads/:id"}
@@ -118,6 +125,8 @@ class App extends Component {
                 isLoggedIn={isLoggedIn}>
                 <Favorites user={user} />
               </PrivateRoute>
+
+              
               <AnonRoute
                 exact
                 path={"/login"}

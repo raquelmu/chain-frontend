@@ -17,9 +17,9 @@ class ApiClient {
     return this.apiClient.get(`/ads/${adId}`);
   }
 
-  // createAd(body) {
-  //   return this.apiClient.post("/new", body);
-  // }
+  createAd(body) {
+    return this.apiClient.post("ads/new", body);
+  }
 
   deleteAd(id) {
     return this.apiClient.delete(`/ads/${id}`);
