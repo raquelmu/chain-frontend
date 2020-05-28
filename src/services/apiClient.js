@@ -18,15 +18,15 @@ class ApiClient {
   }
 
   createAd(body) {
-    return this.apiClient.post("/new", body);
+    return this.apiClient.post("ads/new", body);
   }
 
   deleteAd(id) {
     return this.apiClient.delete(`/ads/${id}`);
   }
 
-  updateAd(id) {
-    return this.apiClient.put(`/ads/${id}`);
+  updateAd(id, data) {
+    return this.apiClient.put(`/ads/${id}/update`, data);
   }
 
   //PROFILE
