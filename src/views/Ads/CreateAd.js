@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 
-export default class UpdateAd extends Component {
+export default class CreateAd extends Component {
   state = {
     name: "",
     
@@ -11,22 +11,21 @@ export default class UpdateAd extends Component {
     this.setState({ad: event.target.value});
   }
 
-  handleUpdate = (id) => {
-    apiClient
-      .updateAd(id)
-      .then(() => {
-        console.log("update");
-        this.loadAds(); 
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmitForm = (e) => {
+    e.preventDefault();
+    apiClient
+    .createAd()
+    .then(({ data:ad }) => {
+      console.log(ad)
+    })
+    .catch((error) => {
+      console.log(error)
     });
   };
 
@@ -34,8 +33,8 @@ export default class UpdateAd extends Component {
   render() {
     return (
       <div>
-        <h1>Update ad</h1>
-          <form onSubmit={this.handleUpdate}>
+        <h1>Create ad</h1>
+          <form onSubmit={this.handleSubmitForm}>
             <label>Name</label>
             <input
               type="text"

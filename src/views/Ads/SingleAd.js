@@ -17,10 +17,39 @@ export default class SingleAd extends Component {
     })
   }
 
+  handleDelete = (id) => {
+    apiClient
+      .deleteAd(id)
+      .then(() => {
+        console.log("done");
+        //no redirige
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  
+
   render() {
     return (
       <div>
         <h1>{this.state.ad.name}</h1>
+        <button
+            onClick={(e) => {
+              this.handleDelete(this.state.ad._id);
+            }}
+          >
+            delete
+          </button>
+          
+           {/* <button
+            onClick={(e) => {
+              this.handleUpdate(this.state.ad._id);
+            }}
+          >
+            Update
+          </button>  */}
       </div>
     );
   }

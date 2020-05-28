@@ -27,29 +27,6 @@ export default class Ads extends Component {
     this.loadAds();
   }
 
-  handleDelete = (id) => {
-    apiClient
-      .deleteAd(id)
-      .then(() => {
-        console.log("done");
-        this.loadAds();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  //  handleUpdate = (id) => {
-  //   apiClient
-  //     .updateAd(id)
-  //     .then(() => {
-  //       console.log("update");
-  //       this.loadAds();
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
 
   renderAds = () => {
     const { ads } = this.state;
@@ -57,20 +34,6 @@ export default class Ads extends Component {
       return (
         <li key={index}>
           <Link to={"/ads/" + ad._id}>{ad.name}</Link>
-          <button
-            onClick={(e) => {
-              this.handleDelete(ad._id);
-            }}
-          >
-            delete
-          </button>
-          {/* <button
-            onClick={(e) => {
-              this.handleUpdate(ad._id);
-            }}
-          >
-            Update
-          </button>  */}
         </li>
       );
     });
