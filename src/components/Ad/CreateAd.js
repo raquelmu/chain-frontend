@@ -65,6 +65,7 @@ export default class CreateAd extends Component {
 
     //VALUE POR DEFECTO 5
     //STATUS POR DEFECTO AVAILABLE
+    //AUTHOR POR DEFECTO
 
     render(){
         const { image, title, description, location, date, email, phone, author, price, status } = this.state.newAd;

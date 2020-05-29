@@ -23,8 +23,7 @@ export default class SingleProfile extends Component {
     const  {user} =this.props
     return (
       <div>
-        <h1>{user.data.username
-}</h1>
+        <h1>{user.data.username}</h1>
       </div>
     );
   }

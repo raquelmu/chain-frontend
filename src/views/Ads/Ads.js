@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Menu from "../../components/Menu/Menu";
+
 import apiClient from "../../services/apiClient";
 import { Link } from "react-router-dom";
 
@@ -80,6 +82,8 @@ export default class Ads extends Component {
       <div>
         <h1>Discover</h1>
         <ul>{this.renderAds()}</ul>
+        <Menu />
+
       </div>
     );
   }
