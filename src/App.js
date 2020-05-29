@@ -11,7 +11,6 @@ import Favorites from "./views/Favorites";
 import CreateAd from "./components/Ad/CreateAd";
 import UpdateAd from "./components/Ad/UpdateAd";
 
-
 import { AnonRoute, PrivateRoute } from "./components";
 
 import apiClient from "./services/apiClient";
@@ -79,6 +78,7 @@ export default class App extends Component {
         {isLoading && <div> Loading.......</div>}
         {!isLoading && (
           <div className="App">
+
             <Switch>              
               <Route
                 exact
@@ -132,7 +132,6 @@ export default class App extends Component {
                 isLoggedIn={isLoggedIn}>
                 <Favorites user={user} />
               </PrivateRoute>
-
               
               {/* <AnonRoute
                 exact
