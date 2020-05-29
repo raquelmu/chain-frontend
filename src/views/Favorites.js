@@ -28,7 +28,7 @@ export default class Favorites extends Component {
           {ads.length > 0 && ads.map((ad, index) => {
             return (
               <div key={index}>
-                <li>{ad.name}</li>
+                <li>{ad.title}</li>
               </div>
             )
           })}
