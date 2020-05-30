@@ -43,7 +43,7 @@ export default class SingleAd extends Component {
           >
             delete
           </button>
-          {/* {user !== pepe ? button : anothebutton}
+          {/* {user !== pepe ? button : anothebutton} */}
 
            <button
             onClick={(e) => {
@@ -51,7 +51,7 @@ export default class SingleAd extends Component {
             }}
           >
             Update
-          </button>  */}
+          </button> 
       </div>
     );
   }

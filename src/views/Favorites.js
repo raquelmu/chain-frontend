@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import apiClient from "../services/apiClient";
 import { Link } from "react-router-dom";
+// import Button from "../components/Button/Button";
 
 
 export default class Favorites extends Component {
@@ -30,7 +31,7 @@ export default class Favorites extends Component {
           {ads.length > 0 && ads.map((ad, index) => {
             return (
               <div key={index}>
-                <Link to={"/ads/" + ad._id}>{ad.title}</Link>
+                <Link to={"/ads/" + ad._id}>{ad.title}</Link> {/* <Button action={ this.handleDelete }> */}
               </div>
             )
           })}

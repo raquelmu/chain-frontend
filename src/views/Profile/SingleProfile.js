@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 
 
 export default class SingleProfile extends Component {
+
 
   handleDelete = (id) => {
     apiClient
       .deleteProf(id)
       .then(() => {
         console.log("done");
-        //no redirige
-      })
+        return <Redirect to="/"/>   
+      })        
       .catch((error) => {
         console.log(error);
       });
@@ -22,7 +23,7 @@ export default class SingleProfile extends Component {
     apiClient
       .logout(id)
       .then(() => {
-        console.log("done");
+        
       })
       .catch((error) => {
         console.log(error);
@@ -31,13 +32,12 @@ export default class SingleProfile extends Component {
 
   render() {
     const { user } = this.props
-    console.log(user)
     return (
       <div>
         <h1>{user.username}</h1>
         <button
             onClick={(e) => {
-              this.handleDelete(user._id);
+              this.handleDelete(user._id);       
             }}
           >
             Delete account
