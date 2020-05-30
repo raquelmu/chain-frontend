@@ -52,6 +52,13 @@ class ApiClient {
     return this.apiClient.post("/signup", body);
   }
 
+  logout(id) {
+    return this.apiClient.get("/logout", id);
+  }
+
+  deleteProf(id) {
+    return this.apiClient.delete(`/${id}`,id);
+  }
 
   //FAVORITES
   getFavoritesUser() {

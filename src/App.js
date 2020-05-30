@@ -29,11 +29,11 @@ export default class App extends Component {
   componentDidMount() {
     apiClient
       .whoami()
-      .then((user) => {
+      .then((response) => {
         this.setState({
           isLoading: false,
           isLoggedIn: true,
-          user,
+          user: response.data,
         });
       })
       .catch((error) => {
@@ -134,6 +134,7 @@ export default class App extends Component {
                 exact
                 path={"/ads"}
                 isLoggedIn={isLoggedIn}
+                user={user}
                 component={Ads}
               />
               <PrivateRoute 

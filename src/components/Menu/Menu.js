@@ -1,50 +1,28 @@
-import { Link } from "react-router-dom"
+import { Link, Route } from "react-router-dom"
 import React, { Component } from "react";
 import IconMenu from "./IconMenu";
 import  './menu.css'
+import {menuData} from "../../utils/constants";
 
 export default class Menu extends Component {
     
-    render(){
-        return(
-            <div className="nav">
-                <div className="icon-menu">
-                    <IconMenu 
-                        route={'/ads'}
-                        icon={"/img/home-icon.png"}
-                        text={"home"}>
-                    </IconMenu>
-                </div>
-                <div className="icon-menu">
-                    <IconMenu 
-                        route={'/ads'}
-                        icon={"/img/search-icon.png"}
-                        text={"search"}>
-                    </IconMenu>
-                </div>
-                <div className="icon-menu">
-                    <IconMenu 
-                        route={'/ads/new'}
-                        icon={"/img/plus-icon.png"}
-                        text={"plus"}>
-                    </IconMenu>
-                </div>
-                <div className="icon-menu">
-                    <IconMenu
-                        route={'/favorites'}
-                        icon={"/img/favorites-icon.png"}
-                        text={"favorites"}>
-                    </IconMenu>
-                </div>
-                <div className="icon-menu">
-                    <IconMenu
-                        route={'/profile/:id'}
-                        icon={"/img/profile-icon.png"}
-                        text={"profile"}>
-                    </IconMenu>
-                </div>
-            </div>
-        )
-    }
+	showIcons = () => {
+		return menuData.map((item, index)=>{
+			const newRoute = item.route === '/profile/' ? `${item.route}${this.props.user._id}` : item.route
+			return(
+				<div className="icon" key={index}>
+					<IconMenu route={newRoute} icon={item.icon} text={item.text}/>
+				</div>
+			)
+		})
+	}
+
+	render(){
+		return(
+			<div className="nav">
+				{this.showIcons()}
+			</div>
+		)
+	}
 }
 

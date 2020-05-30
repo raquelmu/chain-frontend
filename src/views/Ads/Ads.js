@@ -57,12 +57,13 @@ export default class Ads extends Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div>
-        <SearchBar tellme={ this.handleSearch }/>
+        { this.props.location.search !== '' && <SearchBar tellme={ this.handleSearch }/> }
         <h1>Discover</h1>
         <ul>{this.renderAds()}</ul>
-        <Menu />
+        <Menu user={this.props.user}/>
 
       </div>
     );

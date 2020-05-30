@@ -2,13 +2,14 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 // <PrivateRoute exact path={"/resorts/add"} isLoggedIn={isLoggedIn} component={AddResort} />
-function PrivateRoute({ component: Comp, isLoggedIn, ...rest }) {
+function PrivateRoute({ component: Comp, isLoggedIn, user, ...rest }) {
+  console.log(rest)
   return (
     <Route
       {...rest}
       render={(props) =>
         isLoggedIn ? (
-          <Comp ejemplo={props} {...props} />
+          <Comp user={user} {...props} />
         ) : (
           <Redirect
             to={{
