@@ -21,6 +21,16 @@ export default class Favorites extends Component {
     })
   }
 
+  handleAdd = (id) => {
+    apiClient
+      .addFavorite(id)
+      .then(() => {
+        console.log("done");
+      })        
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   
   render() {
     const { ads } = this.state;
@@ -32,6 +42,13 @@ export default class Favorites extends Component {
             return (
               <div key={index}>
                 <Link to={"/ads/" + ad._id}>{ad.title}</Link> {/* <Button action={ this.handleDelete }> */}
+                <button
+                onClick={(e) => {
+              this.handleAdd(this.state.ad._id);
+                }}
+             >
+             Add Favorite
+          </button> 
               </div>
             )
           })}
