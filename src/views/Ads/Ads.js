@@ -39,7 +39,6 @@ export default class Ads extends Component {
 
   renderAds = () => {
     const { ads } = this.state;
-    console.log(this.state.filter)
     const filteredArray = ads.filter(ad => {
       if(this.state.filter.length > 0) {
         return ad.title.toLowerCase().includes(this.state.filter.toLowerCase())
@@ -69,3 +68,4 @@ export default class Ads extends Component {
     );
   }
 }
+

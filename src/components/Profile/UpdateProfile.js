@@ -6,7 +6,7 @@ export default class UpdateProfile extends Component {
     state = {
         updateProfile : {
             // profile_image: "", 
-            name: "",
+            username: "",
             location: "",
             about: "",
           
@@ -17,7 +17,7 @@ export default class UpdateProfile extends Component {
         console.log("event", e.target.value)
         console.log("name", e.target.name)
         this.setState( {
-            updateAd: {
+            updateProfile: {
                 ...this.state.updateProfile, 
                 [e.target.name] : e.target.value
             }
@@ -29,7 +29,7 @@ export default class UpdateProfile extends Component {
     const id = this.props.match.params.id 
 
       apiClient
-        .updateAd(id, this.state.updateProfile)
+        .updateProfile(id, this.state.updateProfile)
         .then(() => {
           console.log("update");
         })
@@ -45,31 +45,20 @@ export default class UpdateProfile extends Component {
 
     render(){
 
-        const { image, title, description, location, date, email, phone, author, price, status } = this.state.updateAd;
+        const {  username, about, location } = this.state.updateProfile;
 
         return(
             <div>
-                <h1>Update Ad</h1>
+                <h1>Update Profile</h1>
                     {/* <label>Image</label>
                     <input type="text" name="image" value={image} onChange={this.handleInput}/> */}
-                    <label>Title</label>
-                    <input type="text" name="title" value={title} onChange={this.handleInput} />
-                    <label>Description</label>
-                    <input type="text" name="description" value={description} onChange={this.handleInput}/>
+                    <label>Username</label>
+                    <input type="text" name="username" value={username} onChange={this.handleInput} />
+                    <label>About</label>
+                    <input type="text" name="about" value={about} onChange={this.handleInput}/>
                     <label>Location</label>
                     <input type="text" name="location" value={location} onChange={this.handleInput}/>
-                    {/* <label>Date</label>
-                    <input type="text" name="date" value={date} onChange={this.handleInput}/> */}
-                    <label>Email</label>
-                    <input type="text" name="email" value={email} onChange={this.handleInput}/>
-                    <label>Phone</label>
-                    <input type="number" name="phone" value={phone} onChange={this.handleInput}/> 
-                    <label>Author</label>
-                    <input type="text" name="author" value={author} onChange={this.handleInput}/>
-                    <label>Price</label>
-                    <input type="number" name="price" value={price} onChange={this.handleInput}/>
-                    <label>Status</label>
-                    <input type="text" name="status" value={status}  onChange={this.handleInput}/>
+              
 
                     <button type="sumbit" value="Update" onClick={this.handleUpdate}>Update</button>
 

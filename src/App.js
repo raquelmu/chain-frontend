@@ -11,6 +11,8 @@ import SingleProfile from "./views/Profile/SingleProfile";
 import Favorites from "./views/Favorites";
 import CreateAd from "./components/Ad/CreateAd";
 import UpdateAd from "./components/Ad/UpdateAd";
+import UpdateProfile from "./components/Profile/UpdateProfile";
+
 
 
 import { AnonRoute, PrivateRoute } from "./components";
@@ -99,22 +101,29 @@ export default class App extends Component {
               </PrivateRoute>
               <PrivateRoute 
                 exact
+                path={"/profile/:id/update"} 
+                isLoggedIn={isLoggedIn}
+                component={UpdateProfile}
+                />
+              <PrivateRoute 
+                exact
                 path={"/ads/new"} 
                 isLoggedIn={isLoggedIn}>
                 <CreateAd />
               </PrivateRoute>
+             
+              <PrivateRoute
+                exact
+                path={"/ads/:id"}
+                isLoggedIn={isLoggedIn}
+                component={SingleAd}
+              /> 
               <PrivateRoute 
                 exact
                 path={"/ads/:id/update"} 
                 isLoggedIn={isLoggedIn}
                 component={UpdateAd}
                 />
-              <PrivateRoute
-                exact
-                path={"/ads/:id"}
-                isLoggedIn={isLoggedIn}
-                component={SingleAd}
-              />
               <AnonRoute 
                 exact 
                 path={"/login"} 

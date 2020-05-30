@@ -36,8 +36,8 @@ class ApiClient {
     return this.apiClient.get(`/${userId}`);
   }
 
-  updateProfile(id, data) {
-    return this.apiClient.put(`/${id}/update`, data);
+  updateProfile(userId, data) {
+    return this.apiClient.put(`/${userId}/update`, data);
   }
 
   whoami() {

@@ -4,9 +4,8 @@ import IconMenu from "./IconMenu";
 import  './menu.css'
 
 export default class Menu extends Component {
-
+    
     render(){
-
         return(
             <div className="nav">
                 <div className="icon-menu">
