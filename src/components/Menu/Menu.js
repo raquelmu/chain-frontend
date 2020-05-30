@@ -1,17 +1,49 @@
 import { Link } from "react-router-dom"
 import React, { Component } from "react";
-
+import IconMenu from "./IconMenu";
+import  './menu.css'
 
 export default class Menu extends Component {
 
     render(){
+
         return(
             <div className="nav">
-                <Link to={'/ads'}><img src="/img/home-icon.png" alt="home"/></Link>
-                <Link to={'/ads'}><img src="/img/search-icon.png" alt="search"/></Link>                <img/>
-                <Link to={'/ads/new'}><img src="/img/plus-icon.png" alt="plus"/></Link>                <img/>
-                <Link to={'/favorites'}><img src="/img/favorites-icon.png" alt="favorites"/></Link>
-                <Link to={'/profile/:id'}><img src="/img/profile-icon.png" alt="profile"/></Link>
+                <div className="icon-menu">
+                    <IconMenu 
+                        route={'/ads'}
+                        icon={"/img/home-icon.png"}
+                        text={"home"}>
+                    </IconMenu>
+                </div>
+                <div className="icon-menu">
+                    <IconMenu 
+                        route={'/ads'}
+                        icon={"/img/search-icon.png"}
+                        text={"search"}>
+                    </IconMenu>
+                </div>
+                <div className="icon-menu">
+                    <IconMenu 
+                        route={'/ads/new'}
+                        icon={"/img/plus-icon.png"}
+                        text={"plus"}>
+                    </IconMenu>
+                </div>
+                <div className="icon-menu">
+                    <IconMenu
+                        route={'/favorites'}
+                        icon={"/img/favorites-icon.png"}
+                        text={"favorites"}>
+                    </IconMenu>
+                </div>
+                <div className="icon-menu">
+                    <IconMenu
+                        route={'/profile/:id'}
+                        icon={"/img/profile-icon.png"}
+                        text={"profile"}>
+                    </IconMenu>
+                </div>
             </div>
         )
     }

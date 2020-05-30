@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 
+
 import Login from "./views/Login";
 import Signup from "./views/Signup";
 import Ads from "./views/Ads/Ads";
@@ -10,6 +11,7 @@ import SingleProfile from "./views/Profile/SingleProfile";
 import Favorites from "./views/Favorites";
 import CreateAd from "./components/Ad/CreateAd";
 import UpdateAd from "./components/Ad/UpdateAd";
+
 
 import { AnonRoute, PrivateRoute } from "./components";
 
@@ -78,7 +80,6 @@ export default class App extends Component {
         {isLoading && <div> Loading.......</div>}
         {!isLoading && (
           <div className="App">
-
             <Switch>              
               <Route
                 exact
@@ -132,6 +133,7 @@ export default class App extends Component {
                 isLoggedIn={isLoggedIn}>
                 <Favorites user={user} />
               </PrivateRoute>
+
               
               {/* <AnonRoute
                 exact
