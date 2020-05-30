@@ -6,7 +6,7 @@ export default class UpdateProfile extends Component {
     state = {
         updateProfile : {
             // profile_image: "", 
-            username: "",
+            name: "",
             location: "",
             about: "",
           
@@ -23,7 +23,7 @@ export default class UpdateProfile extends Component {
             }
         })
     }
- //FALTA AÑADIR IMAGEN Y FECHA A 
+ //FALTA AÑADIR IMAGEN
 
  handleUpdate = () => {
     const id = this.props.match.params.id 
@@ -40,20 +40,17 @@ export default class UpdateProfile extends Component {
 
   
 
-    //VALUE POR DEFECTO 5
-    //STATUS POR DEFECTO AVAILABLE
-
     render(){
 
-        const {  username, about, location } = this.state.updateProfile;
+        const {  name, about, location } = this.state.updateProfile;
 
         return(
             <div>
                 <h1>Update Profile</h1>
                     {/* <label>Image</label>
                     <input type="text" name="image" value={image} onChange={this.handleInput}/> */}
-                    <label>Username</label>
-                    <input type="text" name="username" value={username} onChange={this.handleInput} />
+                    <label>Name</label>
+                    <input type="text" name="name" value={name} onChange={this.handleInput} />
                     <label>About</label>
                     <input type="text" name="about" value={about} onChange={this.handleInput}/>
                     <label>Location</label>
