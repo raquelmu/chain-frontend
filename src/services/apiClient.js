@@ -65,8 +65,8 @@ class ApiClient {
     return this.apiClient.get('/user/favorites/all');
   }
 
-  addFavorite (id) {
-    return this.apiClient.post(`/${id}/add`, id);
+  addFavorite (adId) {
+    return this.apiClient.post(`/user/${adId}/add`, {adId});
   }
 
   removeFavorite (id) {

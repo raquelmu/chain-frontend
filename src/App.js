@@ -116,6 +116,7 @@ export default class App extends Component {
                 exact
                 path={"/ads/:id"}
                 isLoggedIn={isLoggedIn}
+                user={user}
                 component={SingleAd}
               /> 
               <PrivateRoute 
