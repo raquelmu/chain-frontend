@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
+import Button from "../../components/Button/Button";
 
 export default class SingleAd extends Component {
 
@@ -8,7 +9,6 @@ export default class SingleAd extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props)
     apiClient.getAdById(this.props.match.params.id)
     .then(response => {
       this.setState({
@@ -17,17 +17,27 @@ export default class SingleAd extends Component {
     })
   }
 
-  handleDelete = (id) => {
-    apiClient
-      .deleteAd(id)
-      .then(() => {
-        console.log("done");
-        //no redirige
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  handleClickAddToFavorite = (adId) => {
+    console.log(adId)
+    console.log(this.props)
+    // apiClient.addFavorite(this.props.user.id)
+    //   .then((response) => {
+    //     this.setState({ ads: response.data })
+    //   })
+    //   .catch((error) => {
+    //   });
+  }
+  
+
+  // handleDelete = (id) => {
+  //   apiClient
+  //     .deleteAd(id)
+  //     .then(() => {
+  //       //no redirige
+  //     })
+  //     .catch((error) => {
+  //     });
+  // };
 
   
 
@@ -39,8 +49,7 @@ export default class SingleAd extends Component {
         <button
             onClick={(e) => {
               this.handleDelete(this.state.ad._id);
-            }}
-          >
+            }}>
             delete
           </button>
           {/* {user !== pepe ? button : anothebutton} */}
@@ -52,6 +61,11 @@ export default class SingleAd extends Component {
           >
             Update
           </button> 
+          
+          <Button 
+            layout={"Add favorite"}
+            onClick={this.handleClickAddToFavorite}>
+          </Button>
       </div>
     );
   }
