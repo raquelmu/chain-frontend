@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Button from "../components/Button/Button"
+
 
 export default class Login extends Component {
   state = {
@@ -33,12 +35,14 @@ export default class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div>
-        <h1>Login</h1>
+      <div className="container page-login">
+        <Link to={"/"}><i class="fas fa-undo-alt"></i></Link>
+        <h1>Log in</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="username"
+            className="inputField"
             id="username"
             placeholder="username"
             value={username}
@@ -47,14 +51,15 @@ export default class Login extends Component {
           <input
             type="password"
             name="password"
+            className="inputField"
             id="password"
             placeholder="password"
             value={password}
             onChange={this.handleChange}
           />
-          <input type="submit" value="submit" />
+          <Button type="submit">Enter</Button>
         </form>
-        <p>Haven't registered yet?</p><Link to={'/signup'}><button>Register</button></Link> 
+        <Link to={'/signup'} className="linkToSignup">Haven't registered yet?</Link> 
       </div>
     );
   }

@@ -12,7 +12,7 @@ export default class Button extends Component {
     render() {
         const { layout, onClick, type = "button", className = "primary" } = this.props; 
         return(
-            <button className={style[className]} type={type} onClick={onClick} >{layout}</button>
+            <button className={style[className]} type={type} onClick={onClick} >{this.props.children}</button>
         )
     }
 }

@@ -1,3 +1,20 @@
+
 .primary{
-    background-color: red;
+    background-color: rgba(144,136,115,1);
+    color: #fff;
+}
+
+.white{
+    border: 2px solid #3e3e3e;
+    background: #fff;
+}
+
+.primary,
+.white{
+    padding: 13px 50px;
+    font-size: 13px;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-weight: bold;
 }

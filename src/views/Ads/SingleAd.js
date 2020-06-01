@@ -136,28 +136,11 @@ console.log(this.state.ad.joined)
           {user !== pepe ? button : anothebutton} */}
 
           
-          <Button 
-            layout={"Add favorite"}
-            onClick={this.handleAdd}>
-          </Button>
-          <Button 
-            layout={"Delete"}
-            onClick={this.handleDelete}>
-          </Button>
-          <Button 
-            layout={"Update"}
-            onClick={this.goToUpdate}>
-          </Button>
-          <Button 
-            layout={"Join"}
-            onClick={this.handleJoin}>
-          </Button>
-          <Button 
-            layout={"Unjoin"}
-            onClick={this.handleUnjoin}>
-          </Button>
-          
-         
+          <Button onClick={this.handleAdd}>Add favorite</Button>
+          <Button onClick={this.handleDelete}>Delete</Button>
+          <Button onClick={this.goToUpdate}>Update</Button>
+          <Button onClick={this.handleJoin}>Join</Button>
+          <Button onClick={this.handleUnjoin}>Unjoin</Button>
       </div>
     );
   }

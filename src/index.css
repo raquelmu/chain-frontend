@@ -1,5 +1,7 @@
 body {
-  margin: 0;
+  width: 415px;
+  margin: auto;
+  background: #dadada;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +12,72 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a{
+  color: #333;
+}
+
+
+.container{
+}
+
+.page-home{
+  background: rgb(248,240,229);
+  background: linear-gradient(180deg, rgba(248,240,229,1) 0%, rgba(144,136,115,1) 100%);
+  min-height: 735px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.page-home .logo{
+
+}
+
+.page-home .bottom-buttons{
+  background: #fff;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-home .bottom-buttons button{
+  margin: 0px 10px;
+}
+
+.page-login{
+  background: #fff;
+  padding: 15px;
+}
+
+.page-login form{
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField{
+  border: 2px solid #3e3e3e;
+  margin-bottom: 15px;
+  padding: 18px 0px 18px 11px;
+  box-sizing: border-box;
+}
+
+.page-login h1{
+  margin-bottom: 45px
+}
+
+.page-login .inputField{
+  width: 100%;
+}
+
+.page-login .linkToSignup{
+  margin: 40px 0px;
+  display: block;;
 }
