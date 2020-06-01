@@ -18,7 +18,6 @@ export default class SingleAd extends Component {
   }
 
 
-  
   handleDelete = (id) => {
     apiClient
       .deleteAd(id)
@@ -83,6 +82,10 @@ export default class SingleAd extends Component {
         console.log(error);
       });
   };
+
+  goToUpdate(){
+ 
+  }
   
 
   render() {
@@ -102,14 +105,14 @@ console.log(this.state.ad.joined)
             delete
           </button> */}
           {/* {user !== pepe ? button : anothebutton} */}
-
+{/* 
            <button
             onClick={(e) => {
               this.handleUpdate(this.state.ad._id);
             }}
           >
             Update
-          </button> 
+          </button>  */}
           
           <Button 
             layout={"Add favorite"}
@@ -121,7 +124,7 @@ console.log(this.state.ad.joined)
           </Button>
           <Button 
             layout={"Update"}
-            onClick={this.handleUpdate}>
+            onClick={this.goToUpdate}>
           </Button>
           <Button 
             layout={"Join"}
