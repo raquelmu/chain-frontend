@@ -59,7 +59,7 @@ export default class SingleProfile extends Component {
           >
             logout
           </button>
-          <UpdateProfile /> 
+          {/* <UpdateProfile />  */}
 
           <Menu user={this.props.user}/>
           

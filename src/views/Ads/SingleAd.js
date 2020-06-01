@@ -131,22 +131,10 @@ console.log(this.state.ad.joined)
           </button></h2>
 
 
-        {/* { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null } */}
-        {/* <button
-            onClick={(e) => {
-              this.handleDelete(this.state.ad._id);
-            }}>
-            delete
-          </button> */}
-          {/* {user !== pepe ? button : anothebutton} */}
-{/* 
-           <button
-            onClick={(e) => {
-              this.handleUpdate(this.state.ad._id);
-            }}
-          >
-            Update
-          </button>  */}
+          {/* LOGICA BOTONES MOSTRAR Y NO MOSTRAR
+          { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null }        
+          {user !== pepe ? button : anothebutton} */}
+
           
           <Button 
             layout={"Add favorite"}
@@ -168,27 +156,7 @@ console.log(this.state.ad.joined)
             layout={"Unjoin"}
             onClick={this.handleUnjoin}>
           </Button>
-          {/* <button
-            onClick={(e) => {
-             this.handleJoin(this.state.ad._id, true)  // ,selected;
-            }}
-          >
-            Join
-          </button>
-          <button
-            onClick={(e) => {
-              this.handleUnjoin(this.state.ad._id);
-            }}
-          >
-            Unjoin
-          </button>
-          <button
-            onClick={(e) => {
-              this.handleAdd(this.state.ad._id);
-            }}
-          >
-            Add Favorite
-          </button> */}
+          
          
       </div>
     );
