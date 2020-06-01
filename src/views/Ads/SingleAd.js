@@ -30,9 +30,9 @@ export default class SingleAd extends Component {
 
 
 
-  handleJoin = (id) => {
+  handleJoin = (idAd, selected) => {
     apiClient
-      .addJoin(id)
+      .addJoin(idAd, selected)
       .then(() => {
         console.log("addedjoin");
         apiClient.getAdById(this.props.match.params.id)
@@ -112,7 +112,7 @@ console.log(this.state.ad.joined)
           
           <button
             onClick={(e) => {
-              this.handleJoin(this.state.ad._id);
+             this.handleJoin(this.state.ad._id, true)  // ,selected;
             }}
           >
             Join

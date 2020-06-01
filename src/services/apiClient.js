@@ -73,8 +73,8 @@ class ApiClient {
     return this.apiClient.post(`/user/${adsId}/remove`, {adsId});
   }
 
-  addJoin (idAd) {
-    return this.apiClient.post(`ads/${idAd}/join`, {idAd});
+  addJoin (idAd, selected) {
+    return this.apiClient.post(`ads/${idAd}/join`, {idAd,selected});
   }
 
   removeJoin (idAd) {
