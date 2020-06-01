@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
+import UpdateProfile from "../../components/Profile/UpdateProfile";
 
 
 export default class SingleProfile extends Component {
@@ -18,6 +19,7 @@ export default class SingleProfile extends Component {
         console.log(error);
       });
   };
+  
 
   handleLogout = (id) => {
     apiClient
@@ -35,6 +37,14 @@ export default class SingleProfile extends Component {
     return (
       <div>
         <h1>{user.username}</h1>
+        <h1>{user.about}</h1>
+        <h1>{user.location}</h1>
+        <h1>{user.profile_image}</h1>
+        <h1>{user.points}</h1>
+
+
+
+
         <button
             onClick={(e) => {
               this.handleDelete(user._id);       
@@ -49,17 +59,11 @@ export default class SingleProfile extends Component {
           >
             logout
           </button>
+          <UpdateProfile /> 
+
           <Menu user={this.props.user}/>
+          
       </div>
     );
   }
 }
-
-//   render() {
-//     return (
-//       <div>
-//         <h1>SingleProfile</h1>
-//       </div>
-//     );
-//   }
-// }

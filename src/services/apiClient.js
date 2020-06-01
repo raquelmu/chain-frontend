@@ -29,6 +29,14 @@ class ApiClient {
     return this.apiClient.put(`/ads/${id}/update`, data);
   }
 
+  addJoin (idAd, selected) {
+    return this.apiClient.post(`ads/${idAd}/join`, {idAd,selected});
+  }
+
+  selectUser ( idAd, idUserJoined) {
+    return this.apiClient.post(`ads/${idAd}/select`, { idAd, idUserJoined});
+  }
+
   
   //PROFILE
 
@@ -60,6 +68,7 @@ class ApiClient {
     return this.apiClient.delete(`/${id}`,id);
   }
 
+
   //FAVORITES
   getFavoritesUser() {
     return this.apiClient.get('/user/favorites/all');
@@ -71,10 +80,6 @@ class ApiClient {
 
   removeFavorite (adsId) {
     return this.apiClient.post(`/user/${adsId}/remove`, {adsId});
-  }
-
-  addJoin (idAd, selected) {
-    return this.apiClient.post(`ads/${idAd}/join`, {idAd,selected});
   }
 
   removeJoin (idAd) {

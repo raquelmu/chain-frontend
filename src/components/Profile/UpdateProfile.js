@@ -5,7 +5,7 @@ import apiClient from "../../services/apiClient";
 export default class UpdateProfile extends Component {
     state = {
         updateProfile : {
-            // profile_image: "", 
+            profile_image: "", 
             name: "",
             location: "",
             about: "",
@@ -42,13 +42,13 @@ export default class UpdateProfile extends Component {
 
     render(){
 
-        const {  name, about, location } = this.state.updateProfile;
+        const {  profile_image, name, about, location } = this.state.updateProfile;
 
         return(
             <div>
                 <h1>Update Profile</h1>
-                    {/* <label>Image</label>
-                    <input type="text" name="image" value={image} onChange={this.handleInput}/> */}
+                    <label>Image</label>
+                    <input type="text" name="image" value={profile_image} onChange={this.handleInput}/>
                     <label>Name</label>
                     <input type="text" name="name" value={name} onChange={this.handleInput} />
                     <label>About</label>
