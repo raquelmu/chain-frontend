@@ -95,12 +95,12 @@ console.log(this.state.ad.joined)
 
 
         {/* { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null } */}
-        <button
+        {/* <button
             onClick={(e) => {
               this.handleDelete(this.state.ad._id);
             }}>
             delete
-          </button>
+          </button> */}
           {/* {user !== pepe ? button : anothebutton} */}
 
            <button
@@ -113,9 +113,25 @@ console.log(this.state.ad.joined)
           
           <Button 
             layout={"Add favorite"}
-            onClick={this.handleClickAddToFavorite}>
+            onClick={this.handleAdd}>
           </Button>
-          <button
+          <Button 
+            layout={"Delete"}
+            onClick={this.handleDelete}>
+          </Button>
+          <Button 
+            layout={"Update"}
+            onClick={this.handleUpdate}>
+          </Button>
+          <Button 
+            layout={"Join"}
+            onClick={this.handleJoin}>
+          </Button>
+          <Button 
+            layout={"Unjoin"}
+            onClick={this.handleUnjoin}>
+          </Button>
+          {/* <button
             onClick={(e) => {
              this.handleJoin(this.state.ad._id, true)  // ,selected;
             }}
@@ -135,7 +151,7 @@ console.log(this.state.ad.joined)
             }}
           >
             Add Favorite
-          </button>
+          </button> */}
          
       </div>
     );
