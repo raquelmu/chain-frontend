@@ -17,34 +17,83 @@ export default class SingleAd extends Component {
     })
   }
 
-  handleClickAddToFavorite = (adId) => {
-    console.log(adId)
-    console.log(this.props)
-    // apiClient.addFavorite(this.props.user.id)
-    //   .then((response) => {
-    //     this.setState({ ads: response.data })
-    //   })
-    //   .catch((error) => {
-    //   });
-  }
+
   
+  handleDelete = (id) => {
+    apiClient
+      .deleteAd(id)
+      .then(() => {
+        //no redirige
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  // handleDelete = (id) => {
-  //   apiClient
-  //     .deleteAd(id)
-  //     .then(() => {
-  //       //no redirige
-  //     })
-  //     .catch((error) => {
-  //     });
-  // };
 
+
+  handleJoin = (idAd, selected) => {
+    apiClient
+      .addJoin(idAd, selected)
+      .then(() => {
+        console.log("addedjoin");
+        apiClient.getAdById(this.props.match.params.id)
+        .then(response => {
+          this.setState({
+            ad: response.data
+          })
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  handleUnjoin = (id) => {
+    apiClient
+      .removeJoin(id)
+      .then(() => {
+        console.log("done");
+        apiClient.getAdById(this.props.match.params.id)
+        .then(response => {
+          this.setState({
+            ad: response.data
+          })
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  handleAdd = (adsId) => {
+    apiClient
+      .addFavorite(adsId)
+      .then(() => {
+        console.log(adsId);
+        apiClient.getAdById(this.props.match.params.id)
+        .then(response => {
+          this.setState({
+            ad: response.data
+          })
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   
 
   render() {
+
+console.log(this.state.ad.joined)
     return (
       <div>
         <h1>{this.state.ad.title}</h1>
+        <h2>{this.state.ad.joined}</h2>
+
+
         {/* { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null } */}
         <button
             onClick={(e) => {
@@ -66,6 +115,28 @@ export default class SingleAd extends Component {
             layout={"Add favorite"}
             onClick={this.handleClickAddToFavorite}>
           </Button>
+          <button
+            onClick={(e) => {
+             this.handleJoin(this.state.ad._id, true)  // ,selected;
+            }}
+          >
+            Join
+          </button>
+          <button
+            onClick={(e) => {
+              this.handleUnjoin(this.state.ad._id);
+            }}
+          >
+            Unjoin
+          </button>
+          <button
+            onClick={(e) => {
+              this.handleAdd(this.state.ad._id);
+            }}
+          >
+            Add Favorite
+          </button>
+         
       </div>
     );
   }

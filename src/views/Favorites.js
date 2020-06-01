@@ -17,16 +17,23 @@ export default class Favorites extends Component {
     // apiClient.whoami().then(response => {
     //   this.setState({userId: response.data._id})
     apiClient.getFavoritesUser().then(response => {
+      console.log(response.data)
       this.setState({ads: response.data})
     })
   }
 
-  handleAdd = (id) => {
+  
+
+  handleRemove = (id) => {
     apiClient
-      .addFavorite(id)
+      .removeFavorite(id)
       .then(() => {
         console.log("done");
-      })        
+        apiClient.getFavoritesUser().then(response => {
+          console.log(response.data)
+          this.setState({ads: response.data})
+        })
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -34,8 +41,7 @@ export default class Favorites extends Component {
   
   render() {
     const { ads } = this.state;
-    return(
-    
+    return( 
       <div>
         <ul>
           {ads.length > 0 && ads.map((ad, index) => {
@@ -43,12 +49,13 @@ export default class Favorites extends Component {
               <div key={index}>
                 <Link to={"/ads/" + ad._id}>{ad.title}</Link> {/* <Button action={ this.handleDelete }> */}
                 <button
-                onClick={(e) => {
-              this.handleAdd(this.state.ad._id);
-                }}
-             >
-             Add Favorite
-          </button> 
+            onClick={(e) => {
+              this.handleRemove(ad._id);
+            }}
+          >
+            Remove Favorite
+          </button>
+          
               </div>
             )
           })}
