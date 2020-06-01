@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
-import UpdateAd from "../../components/Ad/UpdateAd";
+import Button from "../../components/Button/Button";
 
 export default class SingleAd extends Component {
 
@@ -9,7 +9,6 @@ export default class SingleAd extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props)
     apiClient.getAdById(this.props.match.params.id)
     .then(response => {
       this.setState({
@@ -18,6 +17,8 @@ export default class SingleAd extends Component {
     })
   }
 
+
+  
   handleDelete = (id) => {
     apiClient
       .deleteAd(id)
@@ -128,19 +129,43 @@ console.log(this.state.ad.joined)
 
 
         {/* { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null } */}
-        <button
+        {/* <button
             onClick={(e) => {
               this.handleDelete(this.state.ad._id);
-            }}
-          >
+            }}>
             delete
-          </button>
+          </button> */}
           {/* {user !== pepe ? button : anothebutton} */}
 
-          <UpdateAd /> 
-
-         
-          <button
+           <button
+            onClick={(e) => {
+              this.handleUpdate(this.state.ad._id);
+            }}
+          >
+            Update
+          </button> 
+          
+          <Button 
+            layout={"Add favorite"}
+            onClick={this.handleAdd}>
+          </Button>
+          <Button 
+            layout={"Delete"}
+            onClick={this.handleDelete}>
+          </Button>
+          <Button 
+            layout={"Update"}
+            onClick={this.handleUpdate}>
+          </Button>
+          <Button 
+            layout={"Join"}
+            onClick={this.handleJoin}>
+          </Button>
+          <Button 
+            layout={"Unjoin"}
+            onClick={this.handleUnjoin}>
+          </Button>
+          {/* <button
             onClick={(e) => {
              this.handleJoin(this.state.ad._id, true)  // ,selected;
             }}
@@ -160,7 +185,7 @@ console.log(this.state.ad.joined)
             }}
           >
             Add Favorite
-          </button>
+          </button> */}
          
       </div>
     );
