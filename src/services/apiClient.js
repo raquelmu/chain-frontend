@@ -65,16 +65,21 @@ class ApiClient {
     return this.apiClient.get('/user/favorites/all');
   }
 
-  addFavorite (id) {
-    return this.apiClient.post(`/${id}/add`, id);
+  addFavorite (adsId) {
+    return this.apiClient.post(`user/${adsId}/add`, {adsId});
   }
 
-  removeFavorite (id) {
-    return this.apiClient.post((`/${id}/remove`, id));
+  removeFavorite (adsId) {
+    return this.apiClient.post(`/user/${adsId}/remove`, {adsId});
   }
 
+  addJoin (idAd) {
+    return this.apiClient.post(`ads/${idAd}/join`, {idAd});
+  }
 
-
+  removeJoin (idAd) {
+    return this.apiClient.post(`ads/${idAd}/unjoin`, {idAd});
+  }
 }
 
 const apiClient = new ApiClient();
