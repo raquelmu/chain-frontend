@@ -28,7 +28,6 @@ export default class Ads extends Component {
   };
 
   componentDidMount() {
-    console.log("COMPONENT DID MOUNT")
     this.loadAds();
   }
 

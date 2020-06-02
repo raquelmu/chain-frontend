@@ -8,7 +8,7 @@ export default class SingleAd extends Component {
 
   state = {
     ad: {},
-    hasBeenDeleted: false
+    hasBeenDeleted: false,
   }
 
   componentDidMount(){
