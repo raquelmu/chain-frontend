@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import Button from "../../components/Button/Button";
+import { Link, Redirect } from "react-router-dom";
+
 
 export default class SingleAd extends Component {
 
   state = {
-    ad: {}
+    ad: {},
+    hasBeenDeleted: false
   }
 
   componentDidMount(){
@@ -22,10 +25,11 @@ export default class SingleAd extends Component {
     apiClient
       .deleteAd(id)
       .then(() => {
-        //no redirige
+        this.setState({
+          hasBeenDeleted: true
+        })
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -33,7 +37,6 @@ export default class SingleAd extends Component {
     apiClient
       .selectUser(idAd, idUserJoined)
       .then(() => {
-        console.log("selected");
         apiClient.getAdById(this.props.match.params.id)
         .then(response => {
           this.setState({
@@ -42,7 +45,6 @@ export default class SingleAd extends Component {
         })
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -51,7 +53,6 @@ export default class SingleAd extends Component {
     apiClient
       .addJoin(idAd, selected)
       .then(() => {
-        console.log("addedjoin");
         apiClient.getAdById(this.props.match.params.id)
         .then(response => {
           this.setState({
@@ -60,7 +61,6 @@ export default class SingleAd extends Component {
         })
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -69,7 +69,6 @@ export default class SingleAd extends Component {
     apiClient
       .removeJoin(id)
       .then(() => {
-        console.log("done");
         apiClient.getAdById(this.props.match.params.id)
         .then(response => {
           this.setState({
@@ -78,69 +77,71 @@ export default class SingleAd extends Component {
         })
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   
   handleAdd = (adsId) => {
+    console.log("El ID es: " + adsId)
     apiClient
       .addFavorite(adsId)
       .then(() => {
-        console.log(adsId);
         apiClient.getAdById(this.props.match.params.id)
         .then(response => {
           this.setState({
-            ad: response.data
+            ad: response.data,             
+          }, () => {
+            console.log(this.state.ad)
           })
         })
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
-  goToUpdate(){
- 
-  }
   
 
   render() {
 
-console.log(this.state.ad.joined)
     return (
       <div>
-        <h1>{this.state.ad.title}</h1>
-        <h1>{this.state.ad.userId}</h1>
-        <h1>{this.state.ad.image}</h1>
-        <h1>{this.state.ad.description}</h1>
-        <h1>{this.state.ad.phone}</h1>
-        <h1>{this.state.ad.email}</h1>
-        <h1>{this.state.ad.date}</h1>
-        <h1>{this.state.ad.location}</h1>
-        <h1>{this.state.ad.selected}</h1>
-        <h1>{this.state.ad.status}</h1>
-        <h1>{this.state.ad.price}</h1>
+        {this.state.hasBeenDeleted ?
+          <Redirect to={"/ads"} />
+        :  
+          <div>
+            <h1>{this.state.ad.title}</h1>
+            <h1>{this.state.ad.userId}</h1>
+            <h1>{this.state.ad.image}</h1>
+            <h1>{this.state.ad.description}</h1>
+            <h1>{this.state.ad.phone}</h1>
+            <h1>{this.state.ad.email}</h1>
+            <h1>{this.state.ad.date}</h1>
+            <h1>{this.state.ad.location}</h1>
+            <h1>{this.state.ad.selected}</h1>
+            <h1>{this.state.ad.status}</h1>
+            <h1>{this.state.ad.price}</h1>
 
 
-        <h2>{this.state.ad.joined} <button
-            onClick={(e) => {
-             this.handleSelect(this.state.ad._id)  // ,selected;
-            }}
-          >
-            Select
-          </button></h2>
+            {/* <h2>{this.state.ad.joined} <button
+                onClick={(e) => {
+                this.handleSelect(this.state.ad._id)  // ,selected;
+                }}
+              >
+                Select
+              </button></h2> */}
 
 
-          {/* LOGICA BOTONES MOSTRAR Y NO MOSTRAR
-          { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null }        
-          {user !== pepe ? button : anothebutton} */}
+              {/* LOGICA BOTONES MOSTRAR Y NO MOSTRAR
+              { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null }        
+              {user !== pepe ? button : anothebutton} */}
 
-          
-          <Button onClick={this.handleAdd}>Add favorite</Button>
-          <Button onClick={this.handleDelete}>Delete</Button>
-          <Button onClick={this.goToUpdate}>Update</Button>
-          <Button onClick={this.handleJoin}>Join</Button>
-          <Button onClick={this.handleUnjoin}>Unjoin</Button>
+              
+              <Button onClick={() => this.handleAdd(this.state.ad._id)}>Add favorite</Button>
+              <Button onClick={() => this.handleDelete(this.state.ad._id)}>Delete</Button>
+              <Link to={`/ads/${this.state.ad._id}/update`}><Button>Update</Button></Link>
+              <Button onClick={() => this.handleJoin}>Join</Button>
+              <Button onClick={() => this.handleUnjoin(this.state.ad._id)}>Unjoin</Button>
+          </div>
+        }
       </div>
     );
   }

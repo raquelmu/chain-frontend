@@ -30,7 +30,7 @@ class ApiClient {
   }
 
   addJoin (idAd, selected) {
-    return this.apiClient.post(`ads/${idAd}/join`, {idAd,selected});
+    return this.apiClient.post(`ads/${idAd}/join`, {idAd, selected});
   }
 
   selectUser ( idAd, idUserJoined) {

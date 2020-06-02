@@ -17,6 +17,7 @@ export default class UpdateAd extends Component {
             status: "available",
 
         },
+        hasBeenUpdated : false,
     }
     handleInput = (e) => {
         console.log("event", e.target.value)
@@ -54,6 +55,9 @@ export default class UpdateAd extends Component {
 
         return(
             <div>
+                 {/* {this.state.hasBeenUpdated ?
+                    // <Redirect to={} />
+                :   */}
                 <h1>Update Ad</h1>
                     <label>Image</label>
                     <input type="text" name="image" value={image} onChange={this.handleInput}/>
