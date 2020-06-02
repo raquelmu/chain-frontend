@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
-
+import Button from '../Button/Button';
+import Menu from '../Menu/Menu'
+import './CreateAd.css'
 
 export default class CreateAd extends Component {
     state = {
@@ -12,7 +14,6 @@ export default class CreateAd extends Component {
             date: "",
             email: "",
             phone: 0,
-
         },
     }
     handleInput = (e) => {
@@ -64,8 +65,13 @@ export default class CreateAd extends Component {
         const { image, title, description, location, date, email, phone } = this.state.newAd;
 
         return(
-            <div>
-                <h1>New Ad</h1>
+            <div className="page-create-ad">
+                <div className="containerButtonAddPhoto">
+                    <button id="buttonAddPhoto">
+                        Add photo
+                    </button>
+                </div>
+                <div class="form">
                     <label>Image</label>
                     <input type="text" name="image" value={image} onChange={this.handleInput}/>
                     <label>Title</label>
@@ -81,9 +87,9 @@ export default class CreateAd extends Component {
                     <label>Phone</label>
                     <input type="number" name="phone" value={phone} onChange={this.handleInput}/> 
                     
-
-                    <button type="sumbit" value="Create" onClick={this.handleClickCreateAd}>Create</button>
-
+                    <Button type="submit" onClick={this.handleClickCreateAd}>Create</Button>
+                </div>
+                <Menu user={this.props.user}/>
             </div>
         )
         

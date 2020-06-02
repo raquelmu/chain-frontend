@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './SearchBar.css'
 
 export default class SearchBar extends Component {
   state = {
@@ -17,10 +18,10 @@ export default class SearchBar extends Component {
 
     return (
       <div>
-        <h1>Search</h1>
           <input
             type="text"
             name="results"
+            className="inputField"
             id="search"
             placeholder="search"
             value={results}

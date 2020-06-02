@@ -5,6 +5,8 @@ import apiClient from "../../services/apiClient";
 import { Link } from "react-router-dom";
 import SearchBar from "../../components/Search/SearchBar";
 
+import './Ads.css'
+
 export default class Ads extends Component {
   state = {
     ads: [],
@@ -50,7 +52,8 @@ export default class Ads extends Component {
     return filteredArray.map((ad, index) => {
       return (
         <li key={index}>
-          <Link to={"/ads/" + ad._id}>{ad.title}</Link>
+          <Link to={"/ads/" + ad._id}><img src={"http://lorempixel.com/200/200/?id=" + ad._id} /></Link>
+          <span><Link to={"/ads/" + ad._id}>{ad.title}</Link></span>
         </li>
       );
     });
@@ -59,12 +62,11 @@ export default class Ads extends Component {
   render() {
     console.log(this.props)
     return (
-      <div>
-        { this.props.location.search !== '' && <SearchBar tellme={ this.handleSearch }/> }
+      <div className="page-ads">
         <h1>Discover</h1>
-        <ul>{this.renderAds()}</ul>
+        { this.props.location.search !== '' && <SearchBar tellme={ this.handleSearch }/> }
+        <ul className="ads-list">{this.renderAds()}</ul>
         <Menu user={this.props.user}/>
-
       </div>
     );
   }

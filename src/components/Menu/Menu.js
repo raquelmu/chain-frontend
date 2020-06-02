@@ -1,7 +1,7 @@
 import { Link, Route } from "react-router-dom"
 import React, { Component } from "react";
 import IconMenu from "./IconMenu";
-import  './menu.css'
+import  './Menu.css'
 import {menuData} from "../../utils/constants";
 
 export default class Menu extends Component {

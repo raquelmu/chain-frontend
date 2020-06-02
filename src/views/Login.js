@@ -36,7 +36,7 @@ export default class Login extends Component {
 
     return (
       <div className="container page-login">
-        <Link to={"/"}><i class="fas fa-undo-alt"></i></Link>
+        <Link to={"/"}><i className="fas fa-undo-alt"></i></Link>
         <h1>Log in</h1>
         <form onSubmit={this.handleSubmit}>
           <input
