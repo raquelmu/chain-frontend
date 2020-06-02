@@ -7,17 +7,15 @@ import { Link, Redirect } from "react-router-dom";
 export default class SingleAd extends Component {
 
   state = {
-    ad: {},
+    ad: null,
     hasBeenDeleted: false,
   }
 
-  componentDidMount(){
-    apiClient.getAdById(this.props.match.params.id)
-    .then(response => {
-      this.setState({
-        ad: response.data
-      })
-    })
+  async componentDidMount(){
+    const response = await apiClient.getAdById(this.props.match.params.id)
+    if (response) {
+      this.setState({ ad:response.data })
+    } 
   }
 
 
@@ -48,10 +46,25 @@ export default class SingleAd extends Component {
       });
   };
 
-
-  handleJoin = (idAd, selected) => {
+  handleComplete = (idAd) => {
     apiClient
-      .addJoin(idAd, selected)
+      .completeUser(idAd)
+      .then(() => {
+        apiClient.getAdById(this.props.match.params.id)
+        .then(response => {
+          this.setState({
+            ad: response.data
+          })
+        })
+      })
+      .catch((error) => {
+      });
+  };
+
+
+  handleJoin = () => {
+    apiClient
+      .addJoin(this.state.ad._id)
       .then(() => {
         apiClient.getAdById(this.props.match.params.id)
         .then(response => {
@@ -101,15 +114,12 @@ export default class SingleAd extends Component {
   
 
   render() {
-
-    return (
+    console.log(this.state.ad)
+    return this.state.ad ? (
       <div>
-        {this.state.hasBeenDeleted ?
-          <Redirect to={"/ads"} />
-        :  
           <div>
             <h1>{this.state.ad.title}</h1>
-            <h1>{this.state.ad.userId}</h1>
+            <h1>{this.state.ad.userId}</h1>{/*  populate */}
             <h1>{this.state.ad.image}</h1>
             <h1>{this.state.ad.description}</h1>
             <h1>{this.state.ad.phone}</h1>
@@ -120,14 +130,17 @@ export default class SingleAd extends Component {
             <h1>{this.state.ad.status}</h1>
             <h1>{this.state.ad.price}</h1>
 
+            { this.state.ad.joined.map((join, i) => {
+              return (
+                <div key={i}>
+                  <h2>{join}</h2>
+                  <button onClick={ () => this.handleSelect(this.state.ad._id, join) }>Select</button>
+                </div>
+              )
+            }) }
 
-            {/* <h2>{this.state.ad.joined} <button
-                onClick={(e) => {
-                this.handleSelect(this.state.ad._id)  // ,selected;
-                }}
-              >
-                Select
-              </button></h2> */}
+              <button onClick={ () => this.handleComplete(this.state.ad._id) }>Complete</button>
+
 
 
               {/* LOGICA BOTONES MOSTRAR Y NO MOSTRAR
@@ -138,11 +151,12 @@ export default class SingleAd extends Component {
               <Button onClick={() => this.handleAdd(this.state.ad._id)}>Add favorite</Button>
               <Button onClick={() => this.handleDelete(this.state.ad._id)}>Delete</Button>
               <Link to={`/ads/${this.state.ad._id}/update`}><Button>Update</Button></Link>
-              <Button onClick={() => this.handleJoin}>Join</Button>
+              <Button onClick={this.handleJoin}>Join</Button>
               <Button onClick={() => this.handleUnjoin(this.state.ad._id)}>Unjoin</Button>
           </div>
-        }
       </div>
-    );
+    ) : (
+      <div> Loading </div>
+    )
   }
 }

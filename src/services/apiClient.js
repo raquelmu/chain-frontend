@@ -29,14 +29,17 @@ class ApiClient {
     return this.apiClient.put(`/ads/${id}/update`, data);
   }
 
-  addJoin (idAd, selected) {
-    return this.apiClient.post(`ads/${idAd}/join`, {idAd, selected});
+  addJoin (idAd) {
+    return this.apiClient.post(`ads/join`, {idAd});
   }
 
   selectUser ( idAd, idUserJoined) {
     return this.apiClient.post(`ads/${idAd}/select`, { idAd, idUserJoined});
   }
 
+  completeUser ( idAd ) {
+    return this.apiClient.post(`ads/${idAd}/completed`, { idAd });
+  }
   
   //PROFILE
 

@@ -16,13 +16,9 @@ export default class CreateAd extends Component {
             date: "",
             email: "",
             phone: 0,
-        },
-        hasBeenCreatedAd: false,
-        idAd: null,
-    }
+        }
+       }
     handleInput = (e) => {
-        console.log("event", e.target.value)
-        console.log("name", e.target.name)
         this.setState( {
             newAd: {
                 ...this.state.newAd, 
@@ -32,34 +28,13 @@ export default class CreateAd extends Component {
     }
  //FALTA AÑADIR IMAGEN Y FECHA A "functionToCreateAd"
 
-    functionToCreateAd = () => {
+    handleClickCreateAd = () => {
         apiClient.createAd(this.state.newAd)
-        console.log(this.state.newAd)
         .then(response => {
-            this.setState({
-                newAd: response
-            })
+            this.props.history.push(`/ads/${response.data._id}`)
         })
         .catch((error) => {
             console.log(error);
-        });
-    }
-
-    handleClickCreateAd = (e) => {
-
-        this.functionToCreateAd();
-
-        this.setState({
-            newAd : {
-                image: "", 
-                title: "",
-                description: "",
-                location: "",
-                date: "",
-                email: "",
-                phone: 0,
-            },
-            hasBeenCreatedAd: true,
         });
     }
 
@@ -72,9 +47,6 @@ export default class CreateAd extends Component {
 
         return(
             <div className="page-create-ad">
-                {this.state.hasBeenCreatedAd ?
-                    <Redirect to={"/ads"} />
-                : 
                     <div>
                         <div className="containerButtonAddPhoto">
                             <button id="buttonAddPhoto">
@@ -101,7 +73,6 @@ export default class CreateAd extends Component {
                         </div>
                         <Menu user={this.props.user}/>
                     </div>
-                }
             </div>
         )
         
