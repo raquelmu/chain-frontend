@@ -3,6 +3,7 @@ import apiClient from "../../services/apiClient";
 import { Redirect, Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 import UpdateProfile from "../../components/Profile/UpdateProfile";
+import Button from "../../components/Button/Button";
 
 
 export default class SingleProfile extends Component {
@@ -45,23 +46,11 @@ export default class SingleProfile extends Component {
 
 
 
-        <button
-            onClick={(e) => {
-              this.handleDelete(user._id);       
-            }}
-          >
-            Delete account
-          </button>
-          <button
-            onClick={(e) => {
-              this.handleLogout(user._id);
-            }}
-          >
-            logout
-          </button>
-          {/* <UpdateProfile />  */}
+        <Button onClick={(e) => {this.handleDelete(user._id)}}>Delete account</Button>
+        <Button onClick={(e) => {this.handleLogout(user._id)}}>Log out</Button>
+        <Link to={`/profile/${this.props.user._id}/update`}><Button>Edit</Button></Link>
 
-          <Menu user={this.props.user}/>
+        <Menu user={this.props.user}/>
           
       </div>
     );

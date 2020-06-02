@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
+import { Redirect } from "react-router-dom";
 
 
 export default class UpdateProfile extends Component {
@@ -9,9 +10,11 @@ export default class UpdateProfile extends Component {
             name: "",
             location: "",
             about: "",
-          
-
         },
+        hasBeenUpdated : false,
+        userId: null,
+        
+
     }
     handleInput = (e) => {
         console.log("event", e.target.value)
@@ -30,8 +33,12 @@ export default class UpdateProfile extends Component {
 
       apiClient
         .updateProfile(id, this.state.updateProfile)
-        .then(() => {
-          console.log("update");
+        .then((response) => {
+            console.log(response)
+            this.setState({
+                hasBeenUpdated : true,
+                userId: response.data._id 
+            })
         })
         .catch((error) => {
           console.log(error);
@@ -46,21 +53,25 @@ export default class UpdateProfile extends Component {
 
         return(
             <div>
-                <h1>Update Profile</h1>
-                    <label>Image</label>
-                    <input type="text" name="image" value={profile_image} onChange={this.handleInput}/>
-                    <label>Name</label>
-                    <input type="text" name="name" value={name} onChange={this.handleInput} />
-                    <label>About</label>
-                    <input type="text" name="about" value={about} onChange={this.handleInput}/>
-                    <label>Location</label>
-                    <input type="text" name="location" value={location} onChange={this.handleInput}/>
-              
+                {this.state.hasBeenUpdated ?
+                    <Redirect to={`/profile/${this.state.userId}`} />
+                :
+                    <div>
+                        <h1>Update Profile</h1>
+                            <label>Image</label>
+                            <input type="text" name="image" value={profile_image} onChange={this.handleInput}/>
+                            <label>Name</label>
+                            <input type="text" name="name" value={name} onChange={this.handleInput} />
+                            <label>About</label>
+                            <input type="text" name="about" value={about} onChange={this.handleInput}/>
+                            <label>Location</label>
+                            <input type="text" name="location" value={location} onChange={this.handleInput}/>
+                    
 
-                    <button type="sumbit" value="Update" onClick={this.handleUpdate}>Update</button>
-
+                            <button type="sumbit" value="Update" onClick={this.handleUpdate}>Update</button>
+                    </div>
+                }
             </div>
         )
-        
     }
 }

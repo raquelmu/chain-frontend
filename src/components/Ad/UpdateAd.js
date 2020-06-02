@@ -37,7 +37,6 @@ export default class UpdateAd extends Component {
       apiClient
         .updateAd(id, this.state.updateAd)
         .then((response) => {
-            console.log(response)
             this.setState({
                 hasBeenUpdated : true,
                 idAd: response.data._id
