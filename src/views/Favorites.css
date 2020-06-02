@@ -1,0 +1,51 @@
+.page-favorites{
+    background-color: #fff;
+    padding: 15px;
+    padding-bottom: 65px;
+}
+
+.ads-list{
+    list-style-type: none;
+    padding: 0px;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.ads-list li{
+    width: 50%;
+    padding: 0px 6px;
+    margin-bottom: 10px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ads-list img{
+    width: 100%;
+}
+
+.ads-list span a{
+    position: absolute;
+    bottom: 0px;
+    left: 6px;
+    width: calc(100% - 12px);
+    background: #9E9E9E;
+    font-size: 13px;
+    padding: 6px 7px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #fff;
+}
+
+.removeFavorite{
+    top: 5px;
+    position: absolute;
+    right: 10px;
+    background: #000;
+    height: 30px;
+    width: 30px;
+    border: 0px;
+    border-radius: 100%;
+    color: #fff
+}

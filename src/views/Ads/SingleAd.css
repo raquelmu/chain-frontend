@@ -1,0 +1,53 @@
+.page-single-ad{
+    background-color: #fff;
+    padding: 0px 15px 15px 15px;
+    padding-bottom: 65px;
+    position: relative;
+}
+
+.page-single-ad .content{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px 25px 0px;
+}
+
+.page-single-ad .imageContainer{
+    margin: 0px -15px;
+}
+
+.page-single-ad .imageContainer img{
+    width: 100%;
+}
+
+.page-single-ad .content h1{
+    margin-top: 0px;
+}
+
+.buttonEditAd,
+.buttonRemoveAd{
+    position: absolute;
+    background: #333;
+    color: #fff;
+    height: 45px;
+    width: 45px;
+    font-size: 15px;
+    border-radius: 100%;
+    border: 0px;
+}
+
+.buttonEditAd{
+    top: 10px;
+    right: 10px;
+}
+
+.buttonRemoveAd{
+    top: 10px;
+    left: 10px;
+}
+
+.single-ad-column-left{
+
+}
+.single-ad-column-right{
+
+}

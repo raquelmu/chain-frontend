@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import Button from "../../components/Button/Button";
 import { Link, Redirect } from "react-router-dom";
-
+import './SingleAd.css'
+import Menu from "../../components/Menu/Menu";
 
 export default class SingleAd extends Component {
 
@@ -116,44 +117,65 @@ export default class SingleAd extends Component {
   render() {
     console.log(this.state.ad)
     return this.state.ad ? (
-      <div>
-          <div>
-            <h1>{this.state.ad.title}</h1>
-            <h1>{this.state.ad.userId}</h1>{/*  populate */}
-            <h1>{this.state.ad.image}</h1>
-            <h1>{this.state.ad.description}</h1>
-            <h1>{this.state.ad.phone}</h1>
-            <h1>{this.state.ad.email}</h1>
-            <h1>{this.state.ad.date}</h1>
-            <h1>{this.state.ad.location}</h1>
-            <h1>{this.state.ad.selected}</h1>
-            <h1>{this.state.ad.status}</h1>
-            <h1>{this.state.ad.price}</h1>
-
-            { this.state.ad.joined.map((join, i) => {
-              return (
-                <div key={i}>
-                  <h2>{join}</h2>
-                  <button onClick={ () => this.handleSelect(this.state.ad._id, join) }>Select</button>
-                </div>
-              )
-            }) }
-
-              <button onClick={ () => this.handleComplete(this.state.ad._id) }>Complete</button>
-
-
-
-              {/* LOGICA BOTONES MOSTRAR Y NO MOSTRAR
-              { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null }        
-              {user !== pepe ? button : anothebutton} */}
-
-              
-              <Button onClick={() => this.handleAdd(this.state.ad._id)}>Add favorite</Button>
-              <Button onClick={() => this.handleDelete(this.state.ad._id)}>Delete</Button>
-              <Link to={`/ads/${this.state.ad._id}/update`}><Button>Update</Button></Link>
-              <Button onClick={this.handleJoin}>Join</Button>
-              <Button onClick={() => this.handleUnjoin(this.state.ad._id)}>Unjoin</Button>
+      <div className="page-single-ad">
+          <div className="imageContainer">
+            <img src={"http://lorempixel.com/500/500/?id=" + this.state.ad._id} />
           </div>
+          <div className="content">
+            <div className="single-ad-column-left">
+              <h1>{this.state.ad.title}</h1>
+              <p>{this.state.ad.description}</p>
+              
+              <p><strong>Fecha de publicación</strong></p>
+              <p>{this.state.ad.date}</p>
+            </div>
+            <div className="single-add-column-right">
+              <p>{this.state.ad.phone}</p>
+              <p>{this.state.ad.email}</p>
+              <p>{this.state.ad.location}</p>
+              <p>{this.state.ad.selected}</p>
+              <p>{this.state.ad.status}</p>
+              <p>{this.state.ad.price}</p>
+            </div>
+          </div>
+          {this.props.user._id === this.state.ad.userId &&
+            <div>
+              { this.state.ad.joined.map((join, i) => {
+                return (
+                  <div key={i}>
+                    <h2>{join}</h2>
+                    <button onClick={ () => this.handleSelect(this.state.ad._id, join) }>Select</button>
+                  </div>
+                )
+              }) }
+            <button onClick={ () => this.handleComplete(this.state.ad._id) }>Complete</button>
+            </div>
+          }
+
+
+            {/* LOGICA BOTONES MOSTRAR Y NO MOSTRAR
+            { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null }        
+            {user !== pepe ? button : anothebutton} */}
+            
+            <Button onClick={() => this.handleAdd(this.state.ad._id)}>Add favorite</Button>
+            {this.props.user._id === this.state.ad.userId &&
+              <div>
+                <button className="buttonRemoveAd" onClick={() => this.handleDelete(this.state.ad._id)}>
+                  <i className="fas fa-trash"></i>
+                </button>
+                <Link to={`/ads/${this.state.ad._id}/update`}>
+                  <button className="buttonEditAd"><i className="fas fa-edit"></i></button>
+                </Link>
+              </div>
+            }
+
+            {this.state.ad.joined.includes(this.props.user._id) ?
+              <Button onClick={() => this.handleUnjoin(this.state.ad._id)}>Unjoin</Button>
+            :
+              <Button onClick={this.handleJoin}>Join</Button>
+            }
+
+            <Menu user={this.props.user}/>
       </div>
     ) : (
       <div> Loading </div>

@@ -51,7 +51,7 @@ export default class Ads extends Component {
     return filteredArray.map((ad, index) => {
       return (
         <li key={index}>
-          <Link to={"/ads/" + ad._id}><img src={"http://lorempixel.com/200/200/?id=" + ad._id} /></Link>
+          <Link to={"/ads/" + ad._id}><img src={"http://lorempixel.com/500/500/?id=" + ad._id} /></Link>
           <span><Link to={"/ads/" + ad._id}>{ad.title}</Link></span>
         </li>
       );
