@@ -31,7 +31,6 @@ export default class SingleProfile extends Component {
         this.setState({
           logout: true
         })
-        
       })
       .catch((error) => {
         console.log(error);

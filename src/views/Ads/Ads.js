@@ -15,13 +15,11 @@ export default class Ads extends Component {
     apiClient
       .getAllAds()
       .then((response) => {
-        console.log(response)
         this.setState({
           ads: response.data,
         });
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -57,7 +55,6 @@ export default class Ads extends Component {
   };
 
   render() {
-    console.log(this.props)
     return (
       <div className="page-ads">
         <h1>Discover</h1>

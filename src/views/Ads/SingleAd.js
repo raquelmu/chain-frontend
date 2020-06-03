@@ -95,7 +95,6 @@ export default class SingleAd extends Component {
   };
   
   handleAdd = (adsId) => {
-    console.log("El ID es: " + adsId)
     apiClient
       .addFavorite(adsId)
       .then(() => {
@@ -104,7 +103,6 @@ export default class SingleAd extends Component {
           this.setState({
             ad: response.data,             
           }, () => {
-            console.log(this.state.ad)
           })
         })
       })
@@ -115,7 +113,6 @@ export default class SingleAd extends Component {
   
 
   render() {
-    console.log(this.state.ad)
     return this.state.ad ? (
       <div className="page-single-ad">
           <div className="imageContainer">

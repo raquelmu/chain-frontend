@@ -25,7 +25,6 @@ export default class CreateAd extends Component {
             }
         })
     }
- //FALTA AÑADIR IMAGEN Y FECHA A "functionToCreateAd"
 
     handleClickCreateAd = () => {
         apiClient.createAd(this.state.newAd)
@@ -36,10 +35,6 @@ export default class CreateAd extends Component {
             console.log(error);
         });
     }
-
-    //VALUE POR DEFECTO 5
-    //STATUS POR DEFECTO AVAILABLE
-    //AUTHOR POR DEFECTO
 
     render(){
         const { image, title, description, location, date, email, phone } = this.state.newAd;

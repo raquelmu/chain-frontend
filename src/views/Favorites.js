@@ -7,17 +7,12 @@ import './Favorites.css'
 export default class Favorites extends Component {
 
   state = {
-    // idFavs: [],
-    // userId: {},
+    
     ads: [],
   }
 
   componentDidMount(){
-    
-    // apiClient.whoami().then(response => {
-    //   this.setState({userId: response.data._id})
     apiClient.getFavoritesUser().then(response => {
-      console.log(response.data)
       this.setState({ads: response.data})
     })
   }
@@ -28,14 +23,11 @@ export default class Favorites extends Component {
     apiClient
       .removeFavorite(id)
       .then(() => {
-        console.log("done");
         apiClient.getFavoritesUser().then(response => {
-          console.log(response.data)
           this.setState({ads: response.data})
         })
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   
@@ -51,7 +43,7 @@ export default class Favorites extends Component {
                 <Link to={"/ads/" + ad._id}><img alt="Ad" src={"http://lorempixel.com/200/200/?id=" + ad._id} /></Link>
                 <span><Link to={"/ads/" + ad._id}>{ad.title}</Link></span>
                 <button className="removeFavorite" onClick={(e) => this.handleRemove(ad._id)}>
-                  <i class="fas fa-trash"></i>
+                  <i className="fas fa-trash"></i>
                 </button>
               </li>
             )
