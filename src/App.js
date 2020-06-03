@@ -96,8 +96,9 @@ export default class App extends Component {
               <PrivateRoute 
                 exact 
                 path={"/profile/:id"} 
-                isLoggedIn={isLoggedIn}>
-                <SingleProfile user={user} />
+                isLoggedIn={isLoggedIn}
+                user={user}
+                component={SingleProfile}>
               </PrivateRoute>
               <PrivateRoute 
                 exact

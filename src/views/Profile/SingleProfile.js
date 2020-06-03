@@ -9,7 +9,27 @@ export default class SingleProfile extends Component {
   state = {
     hasBeenDeleted: false,
     logout: false,
+    profileId: null,
+    profile: {
+      username: "-"
+    }
   }
+
+  async componentDidMount(){ 
+    console.log()
+    const response = await apiClient.getProfileById(this.props.match.params.id)
+    console.log(response)
+    this.setState({
+      profile: {
+        username: response.data.username
+      }
+    })
+   
+    // if (response) {
+    //   this.setState({ profileId:response.data })
+    // } 
+  }
+  
 
   handleDelete = (id) => {
     apiClient
@@ -49,20 +69,24 @@ export default class SingleProfile extends Component {
               <Redirect to={"/"} />
             :
               <div>
-                <h1>{user.username}</h1>
-                <h1>{user.about}</h1>
+                <h1>Name: {this.state.profile.username}</h1>
+                {/* <h1>{user.about}</h1>
                 <h1>{user.location}</h1>
                 <h1>{user.profile_image}</h1>
-                <h1>Points: {user.points}</h1>
+                <h1>Points: {user.points}</h1> */}
 
-
-                <Button onClick={(e) => {this.handleDelete(user._id)}}>Delete account</Button>
-                <Button onClick={(e) => {this.handleLogout(user._id)}}>Log out</Button>
-                <Link to={`/profile/${this.props.user._id}/update`}>
-                  <button className="buttonEditAd"><i className="fas fa-edit"></i></button>
-                </Link>
+              {this.props.user._id === this.props.match.params.id &&
+                <div>
+                  <Button onClick={(e) => {this.handleDelete(user._id)}}>Delete account</Button>
+                  <Button onClick={(e) => {this.handleLogout(user._id)}}>Log out</Button>
+                  <Link to={`/profile/${this.props.user._id}/update`}>
+                    <button className="buttonEditAd"><i className="fas fa-edit"></i></button>
+                  </Link>
+                </div>
+              }
 
                 <Menu user={this.props.user}/>
+               
               </div>
             }
           </div>
