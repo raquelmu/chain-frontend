@@ -53,7 +53,7 @@ export default class SingleProfile extends Component {
                 <h1>{user.about}</h1>
                 <h1>{user.location}</h1>
                 <h1>{user.profile_image}</h1>
-                <h1>{user.points}</h1>
+                <h1>Points: {user.points}</h1>
 
 
                 <Button onClick={(e) => {this.handleDelete(user._id)}}>Delete account</Button>
