@@ -4,6 +4,7 @@ import { Redirect, Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 import Button from "../../components/Button/Button";
 
+import './SingleProfile.css'
 
 export default class SingleProfile extends Component {
   state = {
@@ -63,7 +64,7 @@ export default class SingleProfile extends Component {
   render() {
     const { user } = this.props
     return (
-      <div>
+      <div className="page-profile">
         {this.state.logout ?
           <Redirect to={"/"} />
         :
@@ -72,7 +73,7 @@ export default class SingleProfile extends Component {
               <Redirect to={"/"} />
             :
               <div>
-                <img alt="image_profile" src="../img/profile-img.png"/>
+                <div className="image-profile-container"><img class="image-profile" src="../img/profile-img.png"/></div>
                 <h4>{this.state.profile.username}</h4>
                 <p>{this.state.profile.about}</p>
                 <h4>{this.state.profile.location}</h4>
@@ -80,8 +81,10 @@ export default class SingleProfile extends Component {
 
               {this.props.user._id === this.props.match.params.id &&
                 <div>
-                  <Button onClick={(e) => {this.handleDelete(user._id)}}>Delete account</Button>
-                  <button onClick={(e) => {this.handleLogout(user._id)}}><i className="fas fa-power-off"></i></button>
+                  <div className="buttonsProfile">
+                    <Button onClick={(e) => {this.handleLogout(user._id)}}><i className="fas fa-power-off"></i> Logout</Button>
+                    <Button onClick={(e) => {this.handleDelete(user._id)}} className="danger">Delete account</Button>
+                  </div>
                   <Link to={`/profile/${this.props.user._id}/update`}>
                     <button className="buttonEditAd"><i className="fas fa-edit"></i></button>
                   </Link>

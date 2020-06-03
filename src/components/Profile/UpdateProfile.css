@@ -1,0 +1,29 @@
+.page-update-profile{
+    background-color: #fff;
+    padding: 15px;
+    padding-bottom: 85px;
+}
+
+
+.page-update-profile .form{
+    display: flex;
+    flex-direction: column;
+}
+.page-update-profile .form input{
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+
+
+.image-profile-container{
+    margin: -15px;
+    margin-bottom: 10px;
+}
+
+.image-profile{
+    width: 100%;
+}

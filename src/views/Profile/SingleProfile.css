@@ -1,0 +1,24 @@
+.page-profile{
+    background-color: #fff;
+    padding: 15px;
+    padding-bottom: 85px;
+}
+
+.image-profile-container{
+    margin: -15px;
+    margin-bottom: 10px;
+}
+
+.image-profile{
+    width: 100%;
+}
+
+.buttonsProfile{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.buttonsProfile button{
+    margin: 15px 0px;
+}

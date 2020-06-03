@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import { Redirect } from "react-router-dom";
+import Button from '../Button/Button'
+import Menu from '../Menu/Menu'
 
+import './UpdateAd.css'
 
 export default class UpdateAd extends Component {
     state = {
@@ -56,28 +59,32 @@ export default class UpdateAd extends Component {
 
         const { image, title, description, location, date, email, phone} = this.state.updateAd;
         return(
-            <div>
+            <div class="page-update-ad">
                  {this.state.hasBeenUpdated ?
                     <Redirect to={`/ads/${this.state.idAd}`} />
-                :  
+                :
                     <div>
-
-                        <h1>Update Ad</h1>
-                            <label>Image</label>
-                            <input type="text" name="image" value={image} onChange={this.handleInput}/>
+                        <div className="containerButtonAddPhoto">
+                            <button id="buttonAddPhoto">
+                                Add photo
+                            </button>
+                        </div>
+                        <div className="form">
                             <label>Title</label>
-                            <input type="text" name="title" value={title} onChange={this.handleInput} />
+                            <input type="text" name="title" value={title} onChange={this.handleInput}  />
                             <label>Description</label>
-                            <input type="text" name="description" value={description} onChange={this.handleInput}/>
+                            <input type="text" name="description" value={description} onChange={this.handleInput} />
                             <label>Location</label>
-                            <input type="text" name="location" value={location} onChange={this.handleInput}/>
+                            <input type="text" name="location" value={location} onChange={this.handleInput} />
                             <label>Date</label>
-                            <input type="text" name="date" value={date} onChange={this.handleInput}/>
+                            <input type="text" name="date" value={date} onChange={this.handleInput} />
                             <label>Email</label>
-                            <input type="text" name="email" value={email} onChange={this.handleInput}/>
+                            <input type="text" name="email" value={email} onChange={this.handleInput} />
                             <label>Phone</label>
-                            <input type="number" name="phone" value={phone} onChange={this.handleInput}/> 
-                            <button type="sumbit" value="Update" onClick={this.handleUpdate}>Update</button>
+                            <input type="number" name="phone" value={phone} onChange={this.handleInput} /> 
+                            <Button type="sumbit" onClick={this.handleUpdate}>Update</Button>
+                        </div>
+                        <Menu user={this.props.user}/>
                     </div>
                 }
             </div>

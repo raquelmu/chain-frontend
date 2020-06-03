@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import { Redirect } from "react-router-dom";
 import Button from "../../components/Button/Button";
-
+import Menu from "../Menu/Menu"
+import './UpdateProfile.css'
 
 export default class UpdateProfile extends Component {
     state = {
@@ -53,19 +54,22 @@ export default class UpdateProfile extends Component {
         const {  username, about, location } = this.state.updateProfile;
 
         return(
-            <div>
+            <div className="page-update-profile">
                 {this.state.hasBeenUpdated ?
                     <Redirect to={`/profile/${this.state.userId}`} />
                 :
                     <div>
-                        <h1>Update Profile</h1>
+                        <div className="image-profile-container"><img class="image-profile" src="../../img/profile-img.png"/></div>
+                        <div class="form">
                             <label>Username</label>
                             <input type="text" name="name" value={username} onChange={this.handleInput} />
                             <label>About</label>
                             <input type="text" name="about" value={about} onChange={this.handleInput}/>
                             <label>Location</label>
                             <input type="text" name="location" value={location} onChange={this.handleInput}/>
-                            <Button type="sumbit" value="Update" onClick={this.handleUpdate}>Save</Button>
+                            <Button type="sumbit" value="Update" onClick={this.handleUpdate}>Update profile</Button>
+                        </div>
+                        <Menu user={this.props.user}/>
                     </div>
                 }
             </div>

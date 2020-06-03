@@ -105,6 +105,7 @@ export default class App extends Component {
                 path={"/profile/:id/update"} 
                 isLoggedIn={isLoggedIn}
                 component={UpdateProfile}
+                user={user}
                 />
               <PrivateRoute 
                 exact
@@ -124,6 +125,7 @@ export default class App extends Component {
                 exact
                 path={"/ads/:id/update"} 
                 isLoggedIn={isLoggedIn}
+                user={user}
                 component={UpdateAd}
                 />
               <AnonRoute 

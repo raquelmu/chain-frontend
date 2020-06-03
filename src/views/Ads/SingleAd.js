@@ -135,7 +135,7 @@ console.log(user)
               <p>{this.state.ad.selected}</p>
               <p>Status: {this.state.ad.status}</p>
               <p>Points: {this.state.ad.price}</p>
-              <Link to={`/profile/${this.state.ad.userId}`}><p>Author: {this.state.ad.userId.name}</p></Link>
+              <Link to={`/profile/${this.state.ad.userId}`}><p>Author</p></Link>
             </div>
           </div>
             {this.props.user._id === this.state.ad.userId &&
