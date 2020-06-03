@@ -138,25 +138,19 @@ export default class SingleAd extends Component {
               <p>{this.state.ad.price}</p>
             </div>
           </div>
-          {this.props.user._id === this.state.ad.userId &&
-            <div>
-              { this.state.ad.joined.map((join, i) => {
-                return (
-                  <div key={i}>
-                    <h2>{join}</h2>
-                    <button onClick={ () => this.handleSelect(this.state.ad._id, join) }>Select</button>
-                  </div>
-                )
-              }) }
-            <button onClick={ () => this.handleComplete(this.state.ad._id) }>Complete</button>
-            </div>
-          }
-
-
-            {/* LOGICA BOTONES MOSTRAR Y NO MOSTRAR
-            { user.session === ad.owner ? <Button layout="delete">Delete</Button> : null }        
-            {user !== pepe ? button : anothebutton} */}
-            
+            {this.props.user._id === this.state.ad.userId &&
+              <div>
+                { this.state.ad.joined.map((join, i) => {
+                  return (
+                    <div key={i}>
+                     <h2>{join}</h2>
+                      <button onClick={ () => this.handleSelect(this.state.ad._id, join) }>Select</button>
+                    </div>
+                  )
+                }) }
+              <button onClick={ () => this.handleComplete(this.state.ad._id) }>Complete</button>
+              </div>
+            }
             <Button onClick={() => this.handleAdd(this.state.ad._id)}>Add favorite</Button>
             {this.props.user._id === this.state.ad.userId &&
               <div>
