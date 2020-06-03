@@ -11,7 +11,11 @@ export default class SingleProfile extends Component {
     logout: false,
     profileId: null,
     profile: {
-      username: "-"
+      username: "",
+      about: "",
+      location: "",
+      points: "",
+
     }
   }
 
@@ -21,13 +25,12 @@ export default class SingleProfile extends Component {
     console.log(response)
     this.setState({
       profile: {
-        username: response.data.username
+        username: response.data.username,
+        about: response.data.about,
+        location: response.data.location,
+        points: response.data.points,
       }
     })
-   
-    // if (response) {
-    //   this.setState({ profileId:response.data })
-    // } 
   }
   
 
@@ -69,16 +72,16 @@ export default class SingleProfile extends Component {
               <Redirect to={"/"} />
             :
               <div>
-                <h1>Name: {this.state.profile.username}</h1>
-                {/* <h1>{user.about}</h1>
-                <h1>{user.location}</h1>
-                <h1>{user.profile_image}</h1>
-                <h1>Points: {user.points}</h1> */}
+                <img alt="image_profile" src="../img/profile-img.png"/>
+                <h4>{this.state.profile.username}</h4>
+                <p>{this.state.profile.about}</p>
+                <h4>{this.state.profile.location}</h4>
+                <h4>Points: {this.state.profile.points}</h4>
 
               {this.props.user._id === this.props.match.params.id &&
                 <div>
                   <Button onClick={(e) => {this.handleDelete(user._id)}}>Delete account</Button>
-                  <Button onClick={(e) => {this.handleLogout(user._id)}}>Log out</Button>
+                  <button onClick={(e) => {this.handleLogout(user._id)}}><i className="fas fa-power-off"></i></button>
                   <Link to={`/profile/${this.props.user._id}/update`}>
                     <button className="buttonEditAd"><i className="fas fa-edit"></i></button>
                   </Link>
