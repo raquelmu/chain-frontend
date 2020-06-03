@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import { Redirect } from "react-router-dom";
-import Button from '../Button/Button'
-import Menu from '../Menu/Menu'
+import Button from '../Button/Button';
+import Menu from '../Menu/Menu';
+
 
 import './UpdateAd.css'
 
@@ -13,7 +14,7 @@ export default class UpdateAd extends Component {
             title: "",
             description: "",
             location: "",
-            date: "",
+            date: Date,
             email: "",
             phone: 0,
             author: "",
@@ -77,7 +78,7 @@ export default class UpdateAd extends Component {
                             <label>Location</label>
                             <input type="text" name="location" value={location} onChange={this.handleInput} />
                             <label>Date</label>
-                            <input type="text" name="date" value={date} onChange={this.handleInput} />
+                            <input type="date" name="date" value={date} onChange={this.handleInput} />
                             <label>Email</label>
                             <input type="text" name="email" value={email} onChange={this.handleInput} />
                             <label>Phone</label>

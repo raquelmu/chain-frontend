@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import Button from '../Button/Button';
-import Menu from '../Menu/Menu'
+import Menu from '../Menu/Menu';
+
 
 import './CreateAd.css'
 
@@ -12,7 +13,7 @@ export default class CreateAd extends Component {
             title: "",
             description: "",
             location: "",
-            date: "",
+            date: Date,
             email: "",
             phone: 0,
         }
@@ -36,7 +37,7 @@ export default class CreateAd extends Component {
     }
 
     render(){
-        const { image, title, description, location, date, email, phone } = this.state.newAd;
+        const { title, description, location, date, email, phone } = this.state.newAd;
 
         return(
             <div className="page-create-ad">
@@ -47,8 +48,7 @@ export default class CreateAd extends Component {
                             </button>
                         </div>
                         <div className="form">
-                            <label>Image</label>
-                            <input type="text" name="image" value={image} onChange={this.handleInput}/>
+                            
                             <label>Title</label>
                             <input type="text" name="title" value={title} onChange={this.handleInput} />
                             <label>Description</label>
@@ -56,7 +56,7 @@ export default class CreateAd extends Component {
                             <label>Location</label>
                             <input type="text" name="location" value={location} onChange={this.handleInput}/>
                             <label>Date</label>
-                            <input type="text" name="date" value={date} onChange={this.handleInput}/>
+                            <input type="date" name="date" value={date} onChange={this.handleInput}/>
                             <label>Email</label>
                             <input type="text" name="email" value={email} onChange={this.handleInput}/>
                             <label>Phone</label>
