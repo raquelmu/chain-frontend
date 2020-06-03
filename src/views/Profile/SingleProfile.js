@@ -56,9 +56,12 @@ export default class SingleProfile extends Component {
                 <h1>{user.profile_image}</h1>
                 <h1>{user.points}</h1>
 
+
                 <Button onClick={(e) => {this.handleDelete(user._id)}}>Delete account</Button>
                 <Button onClick={(e) => {this.handleLogout(user._id)}}>Log out</Button>
-                <Link to={`/profile/${this.props.user._id}/update`}><Button>Edit</Button></Link>
+                <Link to={`/profile/${this.props.user._id}/update`}>
+                  <button className="buttonEditAd"><i className="fas fa-edit"></i></button>
+                </Link>
 
                 <Menu user={this.props.user}/>
               </div>

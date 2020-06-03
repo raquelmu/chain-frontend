@@ -112,7 +112,6 @@ export default class App extends Component {
                 isLoggedIn={isLoggedIn}
                 component={CreateAd}>
               </PrivateRoute>
-             
               <PrivateRoute
                 exact
                 path={"/ads/:id"}
@@ -146,20 +145,6 @@ export default class App extends Component {
                 user={user}
                 component={Favorites}>
               </PrivateRoute>
-
-              
-              {/* <AnonRoute
-                exact
-                path={"/login"}
-                isLoggedIn={isLoggedIn}>
-                <Login onLogin={this.handleLogin} />
-              </AnonRoute>
-              <PrivateRoute
-                exact
-                path={"/ads/all"}
-                isLoggedIn={isLoggedIn}>
-                <Ads />
-              </PrivateRoute> */}
             </Switch>
           </div>
         )}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import apiClient from "../services/apiClient";
 import { Link } from "react-router-dom";
 import Menu from "../components/Menu/Menu"
-import Button from "../components/Button/Button";
 import './Favorites.css'
 
 export default class Favorites extends Component {
@@ -49,7 +48,7 @@ export default class Favorites extends Component {
           {ads.length > 0 && ads.map((ad, index) => {
             return (
               <li key={index}>
-                <Link to={"/ads/" + ad._id}><img src={"http://lorempixel.com/200/200/?id=" + ad._id} /></Link>
+                <Link to={"/ads/" + ad._id}><img alt="Ad" src={"http://lorempixel.com/200/200/?id=" + ad._id} /></Link>
                 <span><Link to={"/ads/" + ad._id}>{ad.title}</Link></span>
                 <button className="removeFavorite" onClick={(e) => this.handleRemove(ad._id)}>
                   <i class="fas fa-trash"></i>

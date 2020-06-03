@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import Button from "../../components/Button/Button";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './SingleAd.css'
 import Menu from "../../components/Menu/Menu";
 
@@ -119,7 +119,7 @@ export default class SingleAd extends Component {
     return this.state.ad ? (
       <div className="page-single-ad">
           <div className="imageContainer">
-            <img src={"http://lorempixel.com/500/500/?id=" + this.state.ad._id} />
+            <img alt="Ad" src={"http://lorempixel.com/500/500/?id=" + this.state.ad._id} />
           </div>
           <div className="content">
             <div className="single-ad-column-left">

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import Menu from "../../components/Menu/Menu";
-
 import apiClient from "../../services/apiClient";
 import { Link } from "react-router-dom";
 import SearchBar from "../../components/Search/SearchBar";
-
 import './Ads.css'
 
 export default class Ads extends Component {
@@ -51,7 +49,7 @@ export default class Ads extends Component {
     return filteredArray.map((ad, index) => {
       return (
         <li key={index}>
-          <Link to={"/ads/" + ad._id}><img src={"http://lorempixel.com/500/500/?id=" + ad._id} /></Link>
+          <Link to={"/ads/" + ad._id}><img alt ="Ad" src={"http://lorempixel.com/500/500/?id=" + ad._id} /></Link>
           <span><Link to={"/ads/" + ad._id}>{ad.title}</Link></span>
         </li>
       );

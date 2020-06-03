@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import Button from '../Button/Button';
 import Menu from '../Menu/Menu'
-import { Redirect } from "react-router-dom";
 
 import './CreateAd.css'
 
