@@ -32,7 +32,6 @@ export default class CreateAd extends Component {
             this.props.history.push(`/ads/${response.data._id}`)
         })
         .catch((error) => {
-            console.log(error);
         });
     }
 

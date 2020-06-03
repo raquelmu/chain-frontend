@@ -113,6 +113,9 @@ export default class SingleAd extends Component {
   
 
   render() {
+    console.log(this.state.ad)
+    const { user } = this.props;
+console.log(user)
     return this.state.ad ? (
       <div className="page-single-ad">
           <div className="imageContainer">
@@ -122,7 +125,6 @@ export default class SingleAd extends Component {
             <div className="single-ad-column-left">
               <h1>{this.state.ad.title}</h1>
               <p>{this.state.ad.description}</p>
-              
               <p><strong>Fecha de publicación</strong></p>
               <p>{this.state.ad.date}</p>
             </div>
@@ -131,8 +133,9 @@ export default class SingleAd extends Component {
               <p>{this.state.ad.email}</p>
               <p>{this.state.ad.location}</p>
               <p>{this.state.ad.selected}</p>
-              <p>{this.state.ad.status}</p>
-              <p>{this.state.ad.price}</p>
+              <p>Status: {this.state.ad.status}</p>
+              <p>Points: {this.state.ad.price}</p>
+              <Link to={`/profile/${this.props.user._id}`}><p>Author: {this.props.user.username}</p></Link>
             </div>
           </div>
             {this.props.user._id === this.state.ad.userId &&
