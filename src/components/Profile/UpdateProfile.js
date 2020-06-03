@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
 import { Redirect } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 
 export default class UpdateProfile extends Component {
     state = {
         updateProfile : {
-            profile_image: "", 
-            name: "",
+            username: "",
             location: "",
             about: "",
+
         },
         hasBeenUpdated : false,
         userId: null,
@@ -49,7 +50,7 @@ export default class UpdateProfile extends Component {
 
     render(){
 
-        const {  profile_image, name, about, location } = this.state.updateProfile;
+        const {  username, about, location } = this.state.updateProfile;
 
         return(
             <div>
@@ -58,17 +59,13 @@ export default class UpdateProfile extends Component {
                 :
                     <div>
                         <h1>Update Profile</h1>
-                            <label>Image</label>
-                            <input type="text" name="image" value={profile_image} onChange={this.handleInput}/>
-                            <label>Name</label>
-                            <input type="text" name="name" value={name} onChange={this.handleInput} />
+                            <label>Username</label>
+                            <input type="text" name="name" value={username} onChange={this.handleInput} />
                             <label>About</label>
                             <input type="text" name="about" value={about} onChange={this.handleInput}/>
                             <label>Location</label>
                             <input type="text" name="location" value={location} onChange={this.handleInput}/>
-                    
-
-                            <button type="sumbit" value="Update" onClick={this.handleUpdate}>Update</button>
+                            <Button type="sumbit" value="Update" onClick={this.handleUpdate}>Save</Button>
                     </div>
                 }
             </div>
