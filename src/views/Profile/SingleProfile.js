@@ -16,11 +16,21 @@ export default class SingleProfile extends Component {
       about: "",
       location: "",
       points: "",
-
     }
   }
 
-  async componentDidMount(){ 
+  async componentDidMount(){
+    this.setState({
+      hasBeenDeleted: false,
+      logout: false,
+      profileId: null,
+      profile: {
+        username: "",
+        about: "",
+        location: "",
+        points: "",
+      }
+    })
     console.log()
     const response = await apiClient.getProfileById(this.props.match.params.id)
     console.log(response)
