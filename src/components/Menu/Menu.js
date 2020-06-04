@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import IconMenu from "./IconMenu";
-import  './Menu.css'
+import  './menu.css'
 import {menuData} from "../../utils/constants";
 
 export default class Menu extends Component {
