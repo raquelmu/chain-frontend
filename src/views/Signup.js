@@ -13,8 +13,10 @@ export default class Login extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     const { onSignup } = this.props;
-    if (username !== "" && password !== "") {
+    if (username !== "" && password.length>5) {
       onSignup({ username, password });
+    }else{
+      alert("La contraseña debe tener un mínimo de 6 caracteres")
     }
   };
 
