@@ -142,7 +142,6 @@ export default class SingleAd extends Component {
   
 
   render() {
-    const { user } = this.props;
     return this.state.ad ? (
       <div className="page-single-ad">
           <div className="imageContainer">
@@ -155,6 +154,7 @@ export default class SingleAd extends Component {
               <p><strong>Fecha de publicación</strong></p>
               <p>{moment(new Date(this.state.ad.date)).format("ddd MMM DD YYYY")}</p>
             </div>
+
             <div className="single-ad-column-right">
               <p>{this.state.ad.phone}</p>
               <p>{this.state.ad.email}</p>

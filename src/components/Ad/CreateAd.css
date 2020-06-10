@@ -2,6 +2,7 @@
     padding: 15px;
     background: #fff;
     padding-bottom: 85px;
+    position: relative;
 }
 
 .page-create-ad .form{

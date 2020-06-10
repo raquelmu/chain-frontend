@@ -2,6 +2,8 @@
     background-color: #fff;
     padding: 15px;
     padding-bottom: 85px;
+    position: relative;
+
 }
 
 
@@ -22,8 +24,17 @@
 .image-profile-container{
     margin: -15px;
     margin-bottom: 10px;
+
+
 }
 
 .image-profile{
     width: 100%;
+
+}
+
+.comeback{
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }

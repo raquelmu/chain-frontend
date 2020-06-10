@@ -74,6 +74,18 @@ export default class App extends Component {
         });
       });
   };
+  handleLogout = () => {
+    apiClient
+      .logout()
+      .then(() => {
+        this.setState({
+          isLoggedIn: false,
+          user: null,        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   render() {
     const { isLoggedIn, isLoading, user } = this.state;
@@ -98,6 +110,7 @@ export default class App extends Component {
                 path={"/profile/:id"} 
                 isLoggedIn={isLoggedIn}
                 user={user}
+                onLogout = {this.handleLogout}
                 component={SingleProfile}>
               </PrivateRoute>
               <PrivateRoute 

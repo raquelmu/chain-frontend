@@ -16,7 +16,7 @@ export default class Login extends Component {
     if (username !== "" && password.length>5) {
       onSignup({ username, password });
     }else{
-      alert("La contraseña debe tener un mínimo de 6 caracteres")
+      alert("Invalid password. Please include a minimum of 6 characters")
     }
   };
 

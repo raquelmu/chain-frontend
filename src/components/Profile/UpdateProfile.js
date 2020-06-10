@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Menu from "../Menu/Menu"
 import './UpdateProfile.css'
@@ -52,6 +52,7 @@ export default class UpdateProfile extends Component {
     render(){
 
         const {  username, about, location } = this.state.updateProfile;
+        const { user } = this.props;
 
         return(
             <div className="page-update-profile">
@@ -59,7 +60,8 @@ export default class UpdateProfile extends Component {
                     <Redirect to={`/profile/${this.state.userId}`} />
                 :
                     <div>
-                        <div className="image-profile-container"><img class="image-profile" src="../../img/profile-img.png"/></div>
+                        <Link to={`/profile/${user._id}`} className="comeback"><i className="fas fa-undo-alt"></i></Link>
+                        <div className="image-profile-container"><img className="image-profile" src="../../img/profile-img.png" alt="profile-img"/></div>
                         <div class="form">
                             <label>Username</label>
                             <input type="text" name="name" value={username} onChange={this.handleInput} />

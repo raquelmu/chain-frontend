@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Button from '../Button/Button';
 import Menu from '../Menu/Menu';
 
@@ -51,20 +51,18 @@ export default class UpdateAd extends Component {
         });
     };
 
-  
-
-    //VALUE POR DEFECTO 5
-    //STATUS POR DEFECTO AVAILABLE
 
     render(){
 
-        const { image, title, description, location, date, email, phone} = this.state.updateAd;
+        const { title, description, location, date, email, phone} = this.state.updateAd;
         return(
             <div class="page-update-ad">
                  {this.state.hasBeenUpdated ?
                     <Redirect to={`/ads/${this.state.idAd}`} />
                 :
                     <div>
+                        <Link to={`/ads/${this.props.match.params.id}`} className="comeback"><i className="fas fa-undo-alt"></i></Link>
+
                         <div className="containerButtonAddPhoto">
                             <button id="buttonAddPhoto">
                                 Add photo

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiClient from "../../services/apiClient";
+import { Link } from "react-router-dom";
 import Button from '../Button/Button';
 import Menu from '../Menu/Menu';
 
@@ -42,6 +43,7 @@ export default class CreateAd extends Component {
 
         return(
             <div className="page-create-ad">
+                    <Link to={"/ads"} className="comeback"><i className="fas fa-undo-alt"></i></Link>
                     <div>
                         <div className="containerButtonAddPhoto">
                             <button id="buttonAddPhoto">
@@ -49,7 +51,6 @@ export default class CreateAd extends Component {
                             </button>
                         </div>
                         <div className="form">
-                            
                             <label>Title</label>
                             <input type="text" name="title" value={title} onChange={this.handleInput} />
                             <label>Description</label>

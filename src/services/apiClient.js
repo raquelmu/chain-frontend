@@ -63,10 +63,13 @@ class ApiClient {
     return this.apiClient.post("/signup", body);
   }
 
-  logout(id) {
-    return this.apiClient.get("/logout", id);
-  }
+  // logout(id) {
+  //   return this.apiClient.get("/logout", id);
+  // }
 
+  logout() {
+    return this.apiClient.get("/logout");
+  }
   deleteProf(id) {
     return this.apiClient.delete(`/${id}`,id);
   }

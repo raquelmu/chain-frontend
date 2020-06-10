@@ -31,9 +31,7 @@ export default class SingleProfile extends Component {
         points: "",
       }
     })
-    console.log()
     const response = await apiClient.getProfileById(this.props.match.params.id)
-    console.log(response)
     this.setState({
       profile: {
         username: response.data.username,
@@ -58,18 +56,12 @@ export default class SingleProfile extends Component {
   };
   
 
-  handleLogout = (id) => {
-    apiClient
-      .logout(id)
-      .then(() => {
-        this.setState({
-          logout: true
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  handleSubmitLogout(){
+    this.props.onLogout()
+    this.setState({
+      logout: true,
+    })      
+  }
 
   render() {
     const { user } = this.props
@@ -83,7 +75,7 @@ export default class SingleProfile extends Component {
               <Redirect to={"/"} />
             :
               <div>
-                <div className="image-profile-container"><img class="image-profile" src="../img/profile-img.png"/></div>
+                <div className="image-profile-container"><img className="image-profile" src="../img/profile-img.png" alt="profile_img"/></div>
                 <h4>{this.state.profile.username}</h4>
                 <p>{this.state.profile.about}</p>
                 <h4>{this.state.profile.location}</h4>
@@ -92,7 +84,7 @@ export default class SingleProfile extends Component {
               {this.props.user._id === this.props.match.params.id &&
                 <div>
                   <div className="buttonsProfile">
-                    <Button onClick={(e) => {this.handleLogout(user._id)}}><i className="fas fa-power-off"></i> Logout</Button>
+                    <Button onClick={(e) => {this.handleSubmitLogout()}}><i className="fas fa-power-off"></i> Logout</Button>
                     <Button onClick={(e) => {this.handleDelete(user._id)}} className="danger">Delete account</Button>
                   </div>
                   <Link to={`/profile/${this.props.user._id}/update`}>
