@@ -33,18 +33,15 @@ export default class UpdateAd extends Component {
             }
         })
     }
- //FALTA AÑADIR IMAGEN Y FECHA A 
 
  handleUpdate = () => {
     const id = this.props.match.params.id 
-
       apiClient
         .updateAd(id, this.state.updateAd)
         .then((response) => {
             this.setState({
                 hasBeenUpdated : true,
                 idAd: response.data._id
-
             })
         })
         .catch((error) => {

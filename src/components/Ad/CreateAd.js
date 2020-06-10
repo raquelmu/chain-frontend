@@ -29,7 +29,6 @@ export default class CreateAd extends Component {
     }
 
     handleClickCreateAd = () => {
-        console.log(this.state.newAd)
         apiClient.createAd(this.state.newAd)
         .then(response => {
             this.props.history.push(`/ads/${response.data._id}`)
